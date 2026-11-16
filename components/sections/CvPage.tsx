@@ -2,6 +2,7 @@ import Link from "next/link";
 import { experience } from "@/content/experience";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
+import { softSkills } from "@/content/softSkills";
 import { stack } from "@/content/stack";
 import { getDictionary, localeBase, type Locale } from "@/content/i18n";
 import { PrintButton } from "@/components/ui/PrintButton";
@@ -153,6 +154,10 @@ export function CvPage({ locale }: { locale: Locale }) {
                   <dd className="text-neutral-700">{g.items.map((i) => i.name).join(", ")}</dd>
                 </div>
               ))}
+              <div className="flex gap-3 sm:col-span-2 print:col-span-2">
+                <dt className="w-28 shrink-0 font-medium text-neutral-950">{t.softSkills}</dt>
+                <dd className="text-neutral-700">{softSkills.map((s) => s.label[locale]).join(", ")}</dd>
+              </div>
             </dl>
           </section>
 

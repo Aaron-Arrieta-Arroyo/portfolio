@@ -80,6 +80,7 @@ const es = {
     countMany: "{n} proyectos",
   },
   stack: {
+    softTitle: "Habilidades blandas",
     intro: "Herramientas con las que trabajo a diario y en proyectos de equipo.",
   },
   now: {
@@ -106,7 +107,8 @@ const es = {
     experience: "Experiencia",
     education: "Educación",
     projects: "Proyectos",
-    skills: "Habilidades técnicas",
+    skills: "Habilidades",
+    softSkills: "Blandas",
     languages: "Idiomas",
     languagesText: "Español (nativo), Inglés B2 — comunicación profesional escrita y verbal",
     location: "Costa Rica",

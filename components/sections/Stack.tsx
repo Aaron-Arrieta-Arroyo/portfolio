@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/Section";
 import { TechIcon } from "@/components/ui/TechIcon";
+import { softSkills } from "@/content/softSkills";
 import { stack } from "@/content/stack";
 import type { Dictionary, Locale } from "@/content/i18n";
 
@@ -34,6 +35,24 @@ export function Stack({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </Reveal>
         ))}
       </div>
+
+      <Reveal className="mt-16">
+        <h3 className="label-mono flex items-center gap-3 font-normal text-muted">
+          <span className="text-accent">05</span>
+          {dict.stack.softTitle}
+        </h3>
+      </Reveal>
+      <ul className="mt-6 grid gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        {softSkills.map((skill, i) => (
+          <Reveal as="li" key={skill.label.en} delay={0.06 * i} className="group bg-surface p-6 transition-colors duration-[180ms] hover:bg-surface-2">
+            <p className="flex items-center gap-3 font-medium">
+              <span aria-hidden className="size-1.5 rounded-full bg-subtle transition-colors duration-[180ms] group-hover:bg-accent" />
+              {skill.label[locale]}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{skill.detail[locale]}</p>
+          </Reveal>
+        ))}
+      </ul>
     </Section>
   );
 }

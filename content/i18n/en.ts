@@ -79,6 +79,7 @@ const en: Dictionary = {
     countMany: "{n} projects",
   },
   stack: {
+    softTitle: "Soft skills",
     intro: "Tools I use day to day and in team projects.",
   },
   now: {
@@ -105,7 +106,8 @@ const en: Dictionary = {
     experience: "Experience",
     education: "Education",
     projects: "Projects",
-    skills: "Technical skills",
+    skills: "Skills",
+    softSkills: "Soft skills",
     languages: "Languages",
     languagesText: "Spanish (native), English B2 — professional written and spoken communication",
     location: "Costa Rica",
