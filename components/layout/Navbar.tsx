@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { Clock } from "@/components/ui/Clock";
 import { EASE, setScrollLocked } from "@/components/motion/Providers";
-import { navSections, profile, type SectionId } from "@/content/profile";
+import { navSections, profile, sections, type SectionId } from "@/content/profile";
 import { localeBase, locales, type Dictionary, type Locale } from "@/content/i18n";
 
 type NavbarProps = { locale: Locale; dict: Dictionary };
@@ -26,13 +26,15 @@ function useActiveSection(enabled: boolean) {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id as SectionId);
+          if (!entry.isIntersecting) continue;
+          const id = entry.target.id as SectionId;
+          // Sections outside the navbar (top, stack, now) clear the highlight.
+          setActive((navSections as readonly string[]).includes(id) ? id : null);
         }
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
-    const top = document.getElementById("top");
-    const targets = [top, ...navSections.map((id) => document.getElementById(id))];
+    const targets = ["top", ...sections].map((id) => document.getElementById(id));
     targets.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, [enabled]);

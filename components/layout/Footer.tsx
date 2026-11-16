@@ -18,7 +18,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </span>
           <span aria-hidden className="text-subtle">·</span>
           <span>{dict.footer.madeWith}</span>
-          <span aria-hidden className="text-subtle">·</span>
+          <span aria-hidden className="hidden text-subtle md:inline">·</span>
           <span className="hidden items-center gap-2 md:inline-flex">
             <kbd className="rounded-md border border-border bg-surface px-1.5 py-1 font-mono text-text">⌘K</kbd>
             {dict.footer.navigate}

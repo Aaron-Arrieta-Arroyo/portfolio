@@ -1,24 +1,27 @@
-import { Section } from "@/components/ui/Section";
-import { Reveal } from "@/components/motion/Reveal";
-import { sections } from "@/content/profile";
 import { getDictionary, type Locale } from "@/content/i18n";
+import { Section } from "@/components/ui/Section";
+import { About } from "./About";
+import { Contact } from "./Contact";
+import { Experience } from "./Experience";
 import { Hero } from "./Hero";
+import { Marquee } from "./Marquee";
+import { Now } from "./Now";
+import { Stack } from "./Stack";
 
-/** Home (one-page). Section bodies land in phases 3–4. */
+/** Home (one-page). Projects land in phase 4. */
 export function HomePage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   return (
     <>
       <Hero locale={locale} dict={dict} />
-
-      {sections.map((id) => (
-        <Section key={id} id={id} label={dict.sections[id]}>
-          <Reveal delay={0.06}>
-            <p className="mt-8 text-2xl font-semibold tracking-[-0.03em] md:text-3xl">{dict.sections[id]}</p>
-          </Reveal>
-        </Section>
-      ))}
+      <Marquee label={dict.sections.stack} />
+      <About dict={dict} />
+      <Experience locale={locale} dict={dict} />
+      <Section id="projects" label={dict.sections.projects} />
+      <Stack locale={locale} dict={dict} />
+      <Now locale={locale} dict={dict} />
+      <Contact dict={dict} />
     </>
   );
 }

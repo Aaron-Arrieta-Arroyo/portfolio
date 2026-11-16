@@ -50,23 +50,21 @@ function Greeting({ greetings }: { greetings: string[] }) {
   );
 }
 
-/** Name revealed letter by letter. */
+/** Name revealed letter by letter. Server-rendered; no JS needed. */
 function Name({ text }: { text: string }) {
-  const reduce = useReducedMotion();
   let count = 0;
 
+  // CSS animation (not JS): it starts on first paint, before hydration.
   const letter = (char: string, accent = false) => {
     const delay = LETTER_START + count++ * LETTER_STEP;
     return (
-      <motion.span
+      <span
         key={count}
-        className={`inline-block ${accent ? "text-accent" : ""}`}
-        initial={reduce ? { opacity: 0 } : { opacity: 0, y: "0.35em", filter: "blur(8px)" }}
-        animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: EASE, delay }}
+        className={`anim-letter inline-block ${accent ? "text-accent" : ""}`}
+        style={{ animationDelay: `${delay}s` }}
       >
         {char}
-      </motion.span>
+      </span>
     );
   };
 
@@ -102,11 +100,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const photoY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -56]);
 
-  const enter = (delay: number) => ({
-    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 16, filter: "blur(6px)" },
-    animate: reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" },
-    transition: { duration: 0.7, ease: EASE, delay },
-  });
+  // Entrance animations are CSS (globals.css) so they run before hydration.
+  const at = (seconds: number) => ({ animationDelay: `${seconds}s` });
 
   const afterName = LETTER_START + (profile.name.length + 1) * LETTER_STEP;
 
@@ -147,18 +142,11 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           className="flex items-end gap-4 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:block lg:w-full lg:max-w-[400px] lg:justify-self-end"
           style={{ y: photoY }}
         >
-          <motion.div
-            className="relative aspect-[4/5] w-[42%] max-w-[190px] shrink-0 overflow-hidden rounded-card border border-border bg-surface lg:w-full lg:max-w-none"
-            initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0% 0% 0% round 12px)" }}
-            animate={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0% 0% 0% round 12px)" }}
-            transition={{ duration: 1, ease: EASE, delay: 0.15 }}
+          <div
+            className="anim-clip-up relative aspect-[4/5] w-[42%] max-w-[190px] shrink-0 overflow-hidden rounded-card border border-border bg-surface lg:w-full lg:max-w-none"
+            style={at(0.15)}
           >
-            <motion.div
-              className="absolute inset-0"
-              initial={reduce ? false : { scale: 1.12 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.4, ease: EASE, delay: 0.15 }}
-            >
+            <div className="anim-zoom-out absolute inset-0" style={at(0.15)}>
               <Image
                 src={profile.images.portrait}
                 alt={dict.hero.photoAlt}
@@ -167,47 +155,45 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 sizes="(min-width: 1024px) 400px, 190px"
                 className="object-cover"
               />
-            </motion.div>
-          </motion.div>
-          <motion.figcaption
-            className="label-mono flex flex-col gap-2.5 pb-1 text-muted lg:mt-3 lg:flex-row lg:items-center lg:justify-between lg:pb-0"
-            {...enter(1)}
+            </div>
+          </div>
+          <figcaption
+            className="anim-enter label-mono flex flex-col gap-2.5 pb-1 text-muted lg:mt-3 lg:flex-row lg:items-center lg:justify-between lg:pb-0"
+            style={at(1)}
           >
             <span>{profile.name}</span>
             <span>{dict.hero.photoCaption}</span>
-          </motion.figcaption>
+          </figcaption>
         </motion.figure>
 
         {/* Copy */}
         <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
-          <motion.p
-            className="label-mono inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-3.5 py-2.5 text-muted"
-            {...enter(0.05)}
+          <p
+            className="anim-enter label-mono inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-3.5 py-2.5 text-muted"
+            style={at(0.05)}
           >
             <span aria-hidden className="pulse-dot size-1.5 rounded-full bg-accent" />
             {dict.hero.status}
-          </motion.p>
+          </p>
 
           <h1 className="mt-7 text-hero leading-[0.95] lg:mt-8">
             <span className="sr-only">
               {dict.hero.greetings[0]} {profile.name}.
             </span>
-            <motion.span className="mb-2 block font-normal tracking-normal lg:mb-3" {...enter(0.15)}>
+            <span className="anim-enter mb-2 block font-normal tracking-normal lg:mb-3" style={at(0.15)}>
               <Greeting greetings={dict.hero.greetings} />
-            </motion.span>
+            </span>
             <Name text={profile.name} />
           </h1>
 
-          <motion.p
-            className="mt-5 text-xl leading-snug tracking-[-0.02em] text-muted md:text-2xl lg:mt-6"
-            {...enter(afterName)}
-          >
+          {/* LCP element: static on purpose so it paints immediately. */}
+          <p className="mt-5 text-xl leading-snug tracking-[-0.02em] text-muted md:text-2xl lg:mt-6">
             <span className="text-text">{dict.hero.role}</span>
             <br />
             {dict.hero.roleSub}
-          </motion.p>
+          </p>
 
-          <motion.div className="mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3 lg:mt-10" {...enter(afterName + 0.12)}>
+          <div className="anim-enter mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3 lg:mt-10" style={at(afterName + 0.12)}>
             <Magnetic>
               <Link
                 href={`${base}/#projects`}
@@ -222,6 +208,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Magnetic>
               <Link
                 href={`${base}/cv`}
+                prefetch={false}
                 className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface px-5 text-sm sm:px-6 font-medium text-text transition-colors duration-[180ms] hover:border-accent"
               >
                 {dict.hero.ctaCv}
@@ -230,13 +217,13 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </span>
               </Link>
             </Magnetic>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom row */}
-        <motion.div
-          className="mt-auto flex items-end justify-between gap-6 pt-4 lg:items-center lg:col-span-12 lg:row-start-2 lg:mt-0"
-          {...enter(afterName + 0.24)}
+        <div
+          className="anim-enter mt-auto flex items-end justify-between gap-6 pt-4 lg:items-center lg:col-span-12 lg:row-start-2 lg:mt-0"
+          style={at(afterName + 0.24)}
         >
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {links.map((link) => (
@@ -260,7 +247,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </span>
             {dict.hero.scroll}
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

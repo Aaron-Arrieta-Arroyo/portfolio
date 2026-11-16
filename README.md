@@ -24,6 +24,9 @@ components/
   ui/            Section, Clock, Grain
 content/
   profile.ts     Nombre, correo, links, fotos
+  experience.ts  Experiencia y educación (ES/EN)
+  stack.ts       Tecnologías por grupo + marquee
+  now.ts         Bloque "Ahora"
   i18n/es.ts     Textos en español
   i18n/en.ts     Textos en inglés
 public/images/   Fotos
@@ -34,6 +37,9 @@ public/images/   Fotos
 Todo el texto vive en `content/`. No hace falta tocar componentes:
 
 - Datos personales y links: `content/profile.ts`
+- Experiencia: `content/experience.ts` (no nombrar la empresa: solo el tipo de empresa)
+- Stack: `content/stack.ts`
+- "Ahora": `content/now.ts`
 - Textos de la interfaz: `content/i18n/es.ts` y `content/i18n/en.ts`
 
 ## Deploy
