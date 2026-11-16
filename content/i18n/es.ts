@@ -139,7 +139,6 @@ const es = {
     projects: "Ver proyectos",
   },
   footer: {
-    madeWith: "Hecho con Next.js",
     navigate: "para navegar",
     email: "Correo",
   },

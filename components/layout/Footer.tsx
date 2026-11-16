@@ -23,8 +23,6 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <span>
             © <Year /> {profile.name}
           </span>
-          <span aria-hidden className="text-subtle">·</span>
-          <span>{dict.footer.madeWith}</span>
           <span aria-hidden className="hidden text-subtle md:inline">·</span>
           <PaletteTrigger label={dict.palette.open} hint={dict.footer.navigate} />
         </p>

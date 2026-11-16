@@ -138,7 +138,6 @@ const en: Dictionary = {
     projects: "View projects",
   },
   footer: {
-    madeWith: "Built with Next.js",
     navigate: "to navigate",
     email: "Email",
   },
