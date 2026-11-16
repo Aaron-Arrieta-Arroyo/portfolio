@@ -1,5 +1,7 @@
 # Portfolio — Aarón Arrieta
 
+En vivo: **https://aaron-arrieta.vercel.app**
+
 Portafolio personal. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Motion + Lenis.
 
 ## Correrlo
@@ -65,7 +67,6 @@ El PDF sale de imprimir la página `/cv` (que ya tiene estilos de impresión, A4
 
 ## Deploy
 
-Vercel: importar el repo y desplegar. La URL pública se toma de `NEXT_PUBLIC_SITE_URL` si existe;
-si no, de la variable `VERCEL_PROJECT_PRODUCTION_URL` que Vercel pone sola. Si conectás un dominio
-propio, definí `NEXT_PUBLIC_SITE_URL=https://tu-dominio` en Vercel para que el sitemap y las
-imágenes sociales usen ese dominio.
+Vercel despliega solo con cada push a `main`. La URL pública (sitemap, Open Graph, JSON-LD) es
+`productionUrl` en `components/layout/metadata.ts`. Si conectás un dominio propio, cambiá ese valor
+o definí `NEXT_PUBLIC_SITE_URL=https://tu-dominio` en Vercel.

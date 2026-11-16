@@ -2,10 +2,17 @@ import type { Metadata, Viewport } from "next";
 import { profile } from "@/content/profile";
 import { getDictionary, localeBase, type Locale } from "@/content/i18n";
 
-/** Public URL: NEXT_PUBLIC_SITE_URL, else Vercel's production domain, else localhost. */
+/** Main public domain (Vercel → Settings → Domains). */
+const productionUrl = "https://aaron-arrieta.vercel.app";
+
+/** Public URL: NEXT_PUBLIC_SITE_URL, else the production domain on Vercel, else the preview URL, else localhost. */
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+  (process.env.VERCEL_ENV === "production"
+    ? productionUrl
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
 
 export const viewport: Viewport = { themeColor: "#0A0A0A", colorScheme: "dark" };
 
