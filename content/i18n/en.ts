@@ -107,7 +107,7 @@ const en: Dictionary = {
     projects: "Projects",
     skills: "Technical skills",
     languages: "Languages",
-    languagesText: "Spanish (native)",
+    languagesText: "Spanish (native), English B2 — professional written and spoken communication",
     location: "Costa Rica",
     file: "/cv/aaron-arrieta-cv-en.pdf",
   },

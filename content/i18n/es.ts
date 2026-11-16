@@ -108,7 +108,7 @@ const es = {
     projects: "Proyectos",
     skills: "Habilidades técnicas",
     languages: "Idiomas",
-    languagesText: "Español (nativo)",
+    languagesText: "Español (nativo), Inglés B2 — comunicación profesional escrita y verbal",
     location: "Costa Rica",
     file: "/cv/aaron-arrieta-cv-es.pdf",
   },
