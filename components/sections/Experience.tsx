@@ -5,6 +5,7 @@ import { m, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/Section";
 import { experience } from "@/content/experience";
+import { courses, coursesIssuer } from "@/content/courses";
 import type { Dictionary, Locale } from "@/content/i18n";
 
 export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -62,6 +63,36 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
           </li>
         ))}
       </ol>
+
+      <div className="mt-20">
+        <Reveal>
+          <p className="label-mono flex items-center gap-3 text-muted">
+            <span className="text-accent">+</span>
+            {dict.experience.courses} · <span className="text-text">{coursesIssuer}</span>
+          </p>
+        </Reveal>
+        <ul className="mt-6 grid gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map((course, i) => (
+            <Reveal
+              key={course.title}
+              as="li"
+              delay={0.05 * i}
+              className="group flex flex-col gap-3 bg-surface p-6 transition-colors duration-[180ms] hover:bg-surface-2"
+              data-spotlight
+            >
+              <span className="label-mono flex items-center gap-2 text-accent">
+                <svg viewBox="0 0 16 16" aria-hidden className="size-3.5 fill-none stroke-current" strokeWidth="1.6">
+                  <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {locale === "es" ? "Completado" : "Complete"}
+              </span>
+              <h3 className="text-lg leading-snug text-text">{course.title}</h3>
+              <p className="text-sm leading-relaxed text-muted">{course.detail[locale]}</p>
+            </Reveal>
+          ))}
+          <li aria-hidden className="hidden bg-surface sm:block" />
+        </ul>
+      </div>
     </Section>
   );
 }

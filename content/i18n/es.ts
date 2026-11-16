@@ -55,6 +55,7 @@ const es = {
   experience: {
     work: "Trabajo",
     education: "Educación",
+    courses: "Cursos completados",
   },
   projects: {
     intro: "Proyectos en equipo y personales: qué problema resolvían y qué construí yo.",
@@ -108,6 +109,7 @@ const es = {
     projects: "Proyectos",
     skills: "Habilidades",
     softSkills: "Blandas",
+    courses: "Cursos",
     languages: "Idiomas",
     languagesText: "Español (nativo), Inglés B2 — comunicación profesional escrita y verbal",
     location: "Costa Rica",

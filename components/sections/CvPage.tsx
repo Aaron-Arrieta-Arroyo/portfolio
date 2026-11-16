@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { courses, coursesIssuer } from "@/content/courses";
 import { experience } from "@/content/experience";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
@@ -142,6 +143,12 @@ export function CvPage({ locale }: { locale: Locale }) {
                   <p className="font-mono text-[11.5px] text-neutral-500 print:text-[9.5px]">{e.period[locale]}</p>
                 </div>
               ))}
+            <p className="mt-2 print:mt-1 text-neutral-700">
+              <span className="font-medium text-neutral-950">
+                {t.courses} ({coursesIssuer}):
+              </span>{" "}
+              {courses.map((c) => c.title).join(", ")}
+            </p>
           </section>
 
           <section className="mt-7 print:mt-4 break-inside-avoid">

@@ -54,6 +54,7 @@ const en: Dictionary = {
   experience: {
     work: "Work",
     education: "Education",
+    courses: "Completed courses",
   },
   projects: {
     intro: "Team and personal projects: the problem they solved and what I built.",
@@ -107,6 +108,7 @@ const en: Dictionary = {
     projects: "Projects",
     skills: "Skills",
     softSkills: "Soft skills",
+    courses: "Courses",
     languages: "Languages",
     languagesText: "Spanish (native), English B2 — professional written and spoken communication",
     location: "Costa Rica",
