@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { EASE } from "./Providers";
 
 type RevealProps = {
@@ -14,7 +14,7 @@ type RevealProps = {
 /** Scroll reveal: opacity 0→1, y 16→0, blur 6→0 over 700ms. Fades only with reduced motion. */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
   const reduce = useReducedMotion();
-  const Tag = motion[as];
+  const Tag = m[as];
 
   return (
     <Tag

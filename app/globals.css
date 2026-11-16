@@ -245,3 +245,53 @@ html.lenis body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Print (CV) ────────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #111;
+    color-scheme: light;
+  }
+  [data-print-hide],
+  [data-grain] {
+    display: none !important;
+  }
+  .anim-page {
+    animation: none !important;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+/* ── View transitions (project card → case study) ─────────── */
+::view-transition-group(.morph) {
+  animation-duration: 500ms;
+  animation-timing-function: var(--ease);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 350ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

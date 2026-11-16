@@ -3,16 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AnimatePresence,
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { m, AnimatePresence, useMotionTemplate, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EASE } from "@/components/motion/Providers";
 import { profile } from "@/content/profile";
@@ -35,7 +26,7 @@ function Greeting({ greetings }: { greetings: string[] }) {
   return (
     <span className="relative block h-7 overflow-hidden text-lg text-muted" aria-hidden>
       <AnimatePresence initial={false}>
-        <motion.span
+        <m.span
           key={index}
           className="absolute inset-0"
           initial={{ y: "100%", opacity: 0 }}
@@ -44,7 +35,7 @@ function Greeting({ greetings }: { greetings: string[] }) {
           transition={{ duration: 0.5, ease: EASE }}
         >
           {greetings[index]}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </span>
   );
@@ -130,7 +121,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_circle_at_82%_45%,rgba(233,161,91,0.05),transparent_70%)] max-lg:bg-[radial-gradient(420px_circle_at_20%_18%,rgba(233,161,91,0.06),transparent_70%)]"
       />
-      <motion.div
+      <m.div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{ background: glow, opacity: glowFade }}
@@ -138,7 +129,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="container-site relative flex flex-1 flex-col gap-8 pb-8 pt-24 lg:grid lg:grid-cols-12 lg:grid-rows-[1fr_auto] lg:items-center lg:gap-x-6 lg:gap-y-10 lg:pt-28">
         {/* Portrait */}
-        <motion.figure
+        <m.figure
           className="flex items-end gap-4 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:block lg:w-full lg:max-w-[400px] lg:justify-self-end"
           style={{ y: photoY }}
         >
@@ -164,7 +155,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <span>{profile.name}</span>
             <span>{dict.hero.photoCaption}</span>
           </figcaption>
-        </motion.figure>
+        </m.figure>
 
         {/* Copy */}
         <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
@@ -206,16 +197,16 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </Link>
             </Magnetic>
             <Magnetic>
-              <Link
-                href={`${base}/cv`}
-                prefetch={false}
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface px-5 text-sm sm:px-6 font-medium text-text transition-colors duration-[180ms] hover:border-accent"
+              <a
+                href={dict.cv.file}
+                download
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface px-5 text-sm font-medium text-text transition-colors duration-[180ms] hover:border-accent sm:px-6"
               >
                 {dict.hero.ctaCv}
                 <span aria-hidden className="text-muted">
                   ↓
                 </span>
-              </Link>
+              </a>
             </Magnetic>
           </div>
         </div>

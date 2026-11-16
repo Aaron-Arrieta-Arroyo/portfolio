@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ViewTransition } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 import { EASE } from "@/components/motion/Providers";
 import { Tilt } from "@/components/motion/Tilt";
 import { ProjectCover } from "@/components/ui/ProjectCover";
@@ -20,13 +20,16 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
         className="group flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-[350ms] ease-soft hover:border-accent"
       >
         <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-bg">
-          <div className="absolute inset-0 transition-transform duration-[700ms] ease-soft group-hover:scale-[1.03]">
-            <ProjectCover
-              project={project}
-              locale={locale}
-              sizes={big ? "(min-width: 1024px) 760px, 100vw" : "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"}
-            />
-          </div>
+          {/* Shared element: morphs into the case-study hero on navigation (View Transitions). */}
+          <ViewTransition name={`cover-${project.slug}`} share="morph" default="none">
+            <div className="absolute inset-0 transition-transform duration-[700ms] ease-soft group-hover:scale-[1.03]">
+              <ProjectCover
+                project={project}
+                locale={locale}
+                sizes={big ? "(min-width: 1024px) 760px, 100vw" : "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"}
+              />
+            </div>
+          </ViewTransition>
           {big && (
             <span className="label-mono absolute left-4 top-4 rounded-full border border-border bg-bg/80 px-3 py-2 text-text backdrop-blur">
               {dict.projects.featured}
@@ -44,7 +47,9 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
             <span aria-hidden className="text-subtle">/</span>
             <span>{project.role[locale]}</span>
           </p>
-          <h3 className={big ? "text-xl md:text-[1.75rem] md:leading-tight" : "text-xl"}>{project.title}</h3>
+          <ViewTransition name={`title-${project.slug}`} share="morph" default="none">
+            <h3 className={`w-fit ${big ? "text-xl md:text-[1.75rem] md:leading-tight" : "text-xl"}`}>{project.title}</h3>
+          </ViewTransition>
           <p className="leading-relaxed text-muted">{project.summary[locale]}</p>
           <div className="mt-auto flex items-end justify-between gap-4 pt-2">
             <ul className="flex flex-wrap gap-1.5" aria-label={dict.projects.stack}>
@@ -92,7 +97,7 @@ export function ProjectsGrid({ locale, dict }: { locale: Locale; dict: Dictionar
                 }`}
               >
                 {active && (
-                  <motion.span
+                  <m.span
                     layoutId="project-filter"
                     aria-hidden
                     className="absolute inset-0 rounded-full bg-text"
@@ -109,10 +114,10 @@ export function ProjectsGrid({ locale, dict }: { locale: Locale; dict: Dictionar
         </p>
       </div>
 
-      <motion.ul layout className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <m.ul layout className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout" initial={false}>
           {visible.map((project) => (
-            <motion.li
+            <m.li
               key={project.slug}
               layout
               className={project.featured && filter === "all" ? "sm:col-span-2" : ""}
@@ -122,10 +127,10 @@ export function ProjectsGrid({ locale, dict }: { locale: Locale; dict: Dictionar
               transition={{ duration: 0.5, ease: EASE }}
             >
               <ProjectCard project={project} locale={locale} dict={dict} />
-            </motion.li>
+            </m.li>
           ))}
         </AnimatePresence>
-      </motion.ul>
+      </m.ul>
     </>
   );
 }

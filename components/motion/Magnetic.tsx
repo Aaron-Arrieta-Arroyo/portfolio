@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { m, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 
 const spring = { stiffness: 220, damping: 18, mass: 0.4 };
 
@@ -13,7 +13,7 @@ export function Magnetic({ children, strength = 0.3 }: { children: React.ReactNo
   const sy = useSpring(y, spring);
 
   return (
-    <motion.div
+    <m.div
       className="inline-block"
       style={{ x: sx, y: sy }}
       onPointerMove={(e) => {
@@ -28,6 +28,6 @@ export function Magnetic({ children, strength = 0.3 }: { children: React.ReactNo
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

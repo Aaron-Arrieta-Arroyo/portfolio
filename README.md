@@ -1,6 +1,6 @@
 # Portfolio — Aarón Arrieta
 
-Portafolio personal. Next.js (App Router) + TypeScript + Tailwind CSS + Motion + Lenis.
+Portafolio personal. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Motion + Lenis.
 
 ## Correrlo
 
@@ -14,39 +14,58 @@ npm run lint
 ## Estructura
 
 ```txt
-app/(es)/        Rutas en español  →  /
-app/en/          Rutas en inglés   →  /en
-app/globals.css  Tokens de diseño (colores, tipografía, easing)
+app/(es)/                 Rutas en español  →  /
+app/en/                   Rutas en inglés   →  /en
+  page.tsx                Home (one-page)
+  projects/[slug]/        Casos de estudio (+ imagen Open Graph por proyecto)
+  cv/                     CV web imprimible
+  not-found.tsx           404 dentro del sitio
+  opengraph-image.tsx     Imagen para redes sociales
+app/global-not-found.tsx  404 para URLs fuera de ambos idiomas
+app/sitemap.ts, robots.ts
+app/globals.css           Tokens de diseño, animaciones CSS, estilos de impresión
 components/
-  layout/        SiteShell, Navbar, Footer, metadata
-  sections/      Secciones de la home
-  motion/        Providers (Lenis + Motion), Reveal
-  ui/            Section, Clock, Grain
+  layout/                 SiteShell, Navbar, Footer, metadata, og
+  sections/               Secciones de la home, CaseStudy, CvPage, 404
+  motion/                 Providers (Lenis + LazyMotion), Reveal, Tilt, Magnetic, Counter
+  ui/                     Section, Clock, Grain, TechIcon, ProjectCover, CommandPalette
 content/
-  profile.ts     Nombre, correo, links, fotos
-  experience.ts  Experiencia y educación (ES/EN)
-  stack.ts       Tecnologías por grupo + marquee
-  now.ts         Bloque "Ahora"
-  projects.ts    Proyectos y casos de estudio (ES/EN)
-  i18n/es.ts     Textos en español
-  i18n/en.ts     Textos en inglés
-public/images/   Fotos
+  profile.ts              Nombre, correo, links, fotos
+  experience.ts           Experiencia y educación (ES/EN)
+  projects.ts             Proyectos y casos de estudio (ES/EN)
+  stack.ts                Tecnologías por grupo + marquee
+  now.ts                  Bloque "Ahora"
+  i18n/es.ts, en.ts       Textos de la interfaz
+public/images/            Fotos y capturas de proyectos (WebP, 16:10)
+public/cv/                CV en PDF (ES y EN)
+assets/fonts/             Geist en TTF para las imágenes Open Graph
 ```
 
 ## Editar contenido
 
-Todo el texto vive en `content/`. No hace falta tocar componentes:
+Todo el texto vive en `content/`; no hace falta tocar componentes.
 
-- Datos personales y links: `content/profile.ts`
-- Experiencia: `content/experience.ts` (no nombrar la empresa: solo el tipo de empresa)
-- Stack: `content/stack.ts`
-- "Ahora": `content/now.ts`
-- Proyectos: `content/projects.ts`. Cada proyecto genera su página en `/projects/<slug>`.
-  Con `cover` muestra la imagen; sin ella, una portada tipográfica con las iniciales.
-  Imágenes en `public/images/projects/` (16:10, WebP).
-- Textos de la interfaz: `content/i18n/es.ts` y `content/i18n/en.ts`
+- Experiencia: `content/experience.ts`. **No nombrar la empresa**, solo el tipo de empresa.
+- Proyectos: `content/projects.ts`. Cada proyecto genera `/projects/<slug>`. Con `cover` muestra
+  la imagen; sin ella, una portada tipográfica con las iniciales.
+- Textos de interfaz: `content/i18n/es.ts` y `en.ts` (solo strings; `{n}` se reemplaza con `fmt`).
+
+## Actualizar el CV en PDF
+
+El PDF sale de imprimir la página `/cv` (que ya tiene estilos de impresión, A4, una página):
+
+1. `npm run build && npm run start`
+2. Abrir `http://localhost:3000/cv` → Ctrl+P → **Guardar como PDF**, A4, márgenes predeterminados,
+   con **gráficos de fondo** activados.
+3. Guardar como `public/cv/aaron-arrieta-cv-es.pdf`. Repetir con `/en/cv` → `aaron-arrieta-cv-en.pdf`.
+
+## Atajos
+
+- **⌘K / Ctrl+K**: paleta de comandos (secciones, proyectos, copiar correo, descargar CV, idioma).
 
 ## Deploy
 
-Vercel: importar el repo y desplegar. Variable opcional `NEXT_PUBLIC_SITE_URL`
-con la URL final del sitio (se usa para metadata y Open Graph).
+Vercel: importar el repo y desplegar. La URL pública se toma de `NEXT_PUBLIC_SITE_URL` si existe;
+si no, de la variable `VERCEL_PROJECT_PRODUCTION_URL` que Vercel pone sola. Si conectás un dominio
+propio, definí `NEXT_PUBLIC_SITE_URL=https://tu-dominio` en Vercel para que el sitemap y las
+imágenes sociales usen ese dominio.

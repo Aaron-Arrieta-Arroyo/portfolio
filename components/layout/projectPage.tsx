@@ -17,6 +17,13 @@ export function projectRoute(locale: Locale) {
       return {
         title: project.title,
         description: project.summary[locale],
+        openGraph: {
+          type: "article",
+          title: `${project.title} — Aarón Arrieta`,
+          description: project.summary[locale],
+          url: `${localeBase(locale)}/projects/${project.slug}`,
+        },
+        twitter: { card: "summary_large_image", title: `${project.title} — Aarón Arrieta`, description: project.summary[locale] },
         alternates: {
           canonical: `${localeBase(locale)}/projects/${project.slug}`,
           languages: { es: `/projects/${project.slug}`, en: `/en/projects/${project.slug}` },

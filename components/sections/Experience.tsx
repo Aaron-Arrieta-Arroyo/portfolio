@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { m, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/Section";
 import { experience } from "@/content/experience";
@@ -18,7 +18,7 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
       <ol ref={ref} className="relative mt-12">
         {/* Track + line drawn with scroll */}
         <span aria-hidden className="absolute bottom-2 left-[5px] top-2 w-px bg-border" />
-        <motion.span
+        <m.span
           aria-hidden
           className="absolute bottom-2 left-[5px] top-2 w-px origin-top bg-accent"
           style={{ scaleY: reduce ? 1 : progress }}

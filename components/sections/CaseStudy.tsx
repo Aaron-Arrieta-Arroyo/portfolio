@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
@@ -35,7 +36,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
   ];
 
   return (
-    <article className="anim-page pb-24 pt-32 md:pt-40">
+    <article className="pb-24 pt-32 md:pt-40">
       <div className="container-site">
         <Reveal>
           <Link
@@ -46,12 +47,13 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           </Link>
         </Reveal>
 
-        <Reveal delay={0.06}>
-          <h1 className="mt-10 text-[3rem] leading-[0.95] md:text-[4rem] lg:text-[6rem]">
-            {project.title}
-            <span className="text-accent">.</span>
-          </h1>
-        </Reveal>
+        {/* Not wrapped in Reveal: it is a View Transition target and must be visible on arrival. */}
+        <h1 className="mt-10 text-[3rem] leading-[0.95] md:text-[4rem] lg:text-[6rem]">
+          <ViewTransition name={`title-${project.slug}`} share="morph" default="none">
+            <span className="inline-block">{project.title}</span>
+          </ViewTransition>
+          <span className="text-accent">.</span>
+        </h1>
         <Reveal delay={0.12}>
           <p className="mt-6 max-w-[40ch] text-xl leading-snug tracking-[-0.02em] text-muted md:text-[1.75rem]">
             {project.summary[locale]}
@@ -104,11 +106,11 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
 
         {/* Only real screenshots get the big hero image; typographic covers stay on cards. */}
         {project.cover && (
-          <Reveal delay={0.3}>
+          <ViewTransition name={`cover-${project.slug}`} share="morph" default="none">
             <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-card border border-border bg-surface">
               <ProjectCover project={project} locale={locale} sizes="(min-width: 1200px) 1152px, 100vw" priority />
             </div>
-          </Reveal>
+          </ViewTransition>
         )}
 
         <div className="mt-16">

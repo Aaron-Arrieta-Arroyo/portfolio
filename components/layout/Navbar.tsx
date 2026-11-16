@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 import { Clock } from "@/components/ui/Clock";
 import { EASE, setScrollLocked } from "@/components/motion/Providers";
 import { navSections, profile, sections, type SectionId } from "@/content/profile";
@@ -98,7 +98,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
   }));
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+    <header data-print-hide className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         aria-label={dict.nav.menu}
         className="relative z-50 flex h-12 w-full max-w-[860px] items-center justify-between gap-6 rounded-full border border-border bg-surface/70 pl-2 pr-5 backdrop-blur-xl md:w-auto md:justify-start"
@@ -126,7 +126,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                   }`}
                 >
                   {current && (
-                    <motion.span
+                    <m.span
                       layoutId="nav-active"
                       aria-hidden
                       className="absolute inset-0 rounded-full bg-surface-2"
@@ -177,7 +177,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
       {/* Mobile curtain */}
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id={menuId}
             role="dialog"
             aria-modal="true"
@@ -190,7 +190,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
           >
             <ul className="flex flex-1 flex-col justify-center gap-2">
               {items.map((item, i) => (
-                <motion.li
+                <m.li
                   key={item.id}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -205,10 +205,10 @@ export function Navbar({ locale, dict }: NavbarProps) {
                     <span className="label-mono text-accent">{String(i + 1).padStart(2, "0")}</span>
                     {item.label}
                   </Link>
-                </motion.li>
+                </m.li>
               ))}
             </ul>
-            <motion.div
+            <m.div
               className="flex items-center justify-between"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -217,8 +217,8 @@ export function Navbar({ locale, dict }: NavbarProps) {
             >
               <Clock label={dict.nav.clockLabel} />
               <LangSwitch locale={locale} label={dict.nav.switchLang} />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

@@ -6,6 +6,7 @@ export function Grain() {
   return (
     <div
       aria-hidden
+      data-grain
       className="pointer-events-none fixed inset-0 z-[100] opacity-[0.06] mix-blend-soft-light"
       style={{ backgroundImage: noise }}
     />

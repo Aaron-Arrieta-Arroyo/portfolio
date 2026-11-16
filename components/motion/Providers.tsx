@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { MotionConfig } from "motion/react";
+import { LazyMotion, MotionConfig } from "motion/react";
+
+const loadFeatures = () => import("./features").then((mod) => mod.default);
 
 /** Shared easing: cubic-bezier(0.22, 1, 0.36, 1). */
 export const EASE = [0.22, 1, 0.36, 1] as const;
@@ -27,8 +29,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <MotionConfig reducedMotion="user" transition={{ duration: 0.35, ease: EASE }}>
-      {children}
-    </MotionConfig>
+    <LazyMotion features={loadFeatures} strict>
+      <MotionConfig reducedMotion="user" transition={{ duration: 0.35, ease: EASE }}>
+        {children}
+      </MotionConfig>
+    </LazyMotion>
   );
 }

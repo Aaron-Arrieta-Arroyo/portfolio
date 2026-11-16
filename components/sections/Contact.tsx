@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EASE } from "@/components/motion/Providers";
 import { Reveal } from "@/components/motion/Reveal";
@@ -83,7 +83,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
       <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-6 z-[60] flex justify-center">
         <AnimatePresence>
           {copied && (
-            <motion.p
+            <m.p
               className="label-mono flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-3 text-text"
               initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -92,7 +92,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             >
               <span aria-hidden className="size-1.5 rounded-full bg-accent" />
               {dict.contact.copied}
-            </motion.p>
+            </m.p>
           )}
         </AnimatePresence>
       </div>

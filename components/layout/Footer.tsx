@@ -1,4 +1,5 @@
 import { profile } from "@/content/profile";
+import { PaletteTrigger } from "@/components/ui/PaletteTrigger";
 import { Year } from "@/components/ui/Year";
 import type { Dictionary } from "@/content/i18n";
 
@@ -10,7 +11,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
   ];
 
   return (
-    <footer className="border-t border-border">
+    <footer data-print-hide className="border-t border-border">
       <div className="container-site flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <p className="label-mono flex flex-wrap items-center gap-x-3 gap-y-2 leading-relaxed text-muted">
           <span>
@@ -19,10 +20,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
           <span aria-hidden className="text-subtle">·</span>
           <span>{dict.footer.madeWith}</span>
           <span aria-hidden className="hidden text-subtle md:inline">·</span>
-          <span className="hidden items-center gap-2 md:inline-flex">
-            <kbd className="rounded-md border border-border bg-surface px-1.5 py-1 font-mono text-text">⌘K</kbd>
-            {dict.footer.navigate}
-          </span>
+          <PaletteTrigger label={dict.palette.open} hint={dict.footer.navigate} />
         </p>
         <ul className="flex items-center gap-6">
           {links.map((link) => (

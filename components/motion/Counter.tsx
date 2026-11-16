@@ -1,30 +1,39 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, useInView, useReducedMotion } from "motion/react";
 
-/** Counts from 0 to `to` the first time it scrolls into view. */
+const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
+
+/** Counts from 0 to `to` the first time it scrolls into view (plain rAF, no animation library). */
 export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
-  const reduce = useReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !inView) return;
-    if (reduce) {
-      el.textContent = `${to}${suffix}`;
-      return;
-    }
-    const controls = animate(0, to, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => (el.textContent = `${Math.round(v)}${suffix}`),
-    });
-    return () => controls.stop();
-  }, [inView, reduce, to, suffix]);
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const start = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / 1400);
+          el.textContent = `${Math.round(easeOut(t) * to)}${suffix}`;
+          if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { rootMargin: "0px 0px -15% 0px" },
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [to, suffix]);
 
-  // Final value in the HTML (no-JS, crawlers); replaced by the animation on view.
+  // Final value in the HTML (no-JS, crawlers); the animation replaces it on view.
   return (
     <span ref={ref} className="tabular-nums">
       {to}
