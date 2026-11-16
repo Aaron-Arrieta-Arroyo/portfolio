@@ -163,6 +163,16 @@ h3 {
   }
 }
 
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@utility anim-page {
+  animation: page-in 500ms var(--ease) both;
+}
+
 @utility anim-enter {
   animation: enter 700ms var(--ease) both;
 }

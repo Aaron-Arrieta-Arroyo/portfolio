@@ -47,7 +47,7 @@ const es = {
     body:
       "Hoy trabajo con Drupal 10/11 para clientes del sector público y privado, y fuera de eso entrego con .NET, Laravel, Spring Boot y Kotlin. Me interesa la arquitectura limpia, Drupal desacoplado con Next.js y la seguridad web.",
     stats: <Stat[]>[
-      { value: 30, suffix: "+", label: "PRs integrados en equipo" },
+      { value: 40, suffix: "+", label: "PRs integrados en equipo" },
       { text: "D10→11", label: "Migración de core liderada" },
       { value: 4, suffix: "+", label: "Lenguajes en proyectos reales" },
     ],
@@ -55,6 +55,29 @@ const es = {
   experience: {
     work: "Trabajo",
     education: "Educación",
+  },
+  projects: {
+    intro: "Proyectos en equipo y personales: qué problema resolvían y qué construí yo.",
+    all: "Todos",
+    filterLabel: "Filtrar proyectos",
+    view: "Ver caso",
+    featured: "Destacado",
+    prs: "PRs integrados",
+    back: "Volver a proyectos",
+    role: "Rol",
+    team: "Equipo",
+    teamOf: "{n} personas",
+    solo: "Individual",
+    year: "Año",
+    stack: "Stack",
+    links: "Links",
+    problem: "Problema",
+    contribution: "Mi aporte",
+    architecture: "Arquitectura",
+    learnings: "Aprendizajes",
+    next: "Siguiente proyecto",
+    countOne: "{n} proyecto",
+    countMany: "{n} proyectos",
   },
   stack: {
     intro: "Herramientas con las que trabajo a diario y en proyectos de equipo.",

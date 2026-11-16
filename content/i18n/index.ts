@@ -17,3 +17,8 @@ export function localeBase(locale: Locale): string {
 }
 
 export type { Dictionary };
+
+/** Fill "{n}" in a dictionary string (dictionaries hold only strings so they can reach client components). */
+export function fmt(template: string, n: number): string {
+  return template.replace("{n}", String(n));
+}

@@ -27,6 +27,7 @@ content/
   experience.ts  Experiencia y educación (ES/EN)
   stack.ts       Tecnologías por grupo + marquee
   now.ts         Bloque "Ahora"
+  projects.ts    Proyectos y casos de estudio (ES/EN)
   i18n/es.ts     Textos en español
   i18n/en.ts     Textos en inglés
 public/images/   Fotos
@@ -40,6 +41,9 @@ Todo el texto vive en `content/`. No hace falta tocar componentes:
 - Experiencia: `content/experience.ts` (no nombrar la empresa: solo el tipo de empresa)
 - Stack: `content/stack.ts`
 - "Ahora": `content/now.ts`
+- Proyectos: `content/projects.ts`. Cada proyecto genera su página en `/projects/<slug>`.
+  Con `cover` muestra la imagen; sin ella, una portada tipográfica con las iniciales.
+  Imágenes en `public/images/projects/` (16:10, WebP).
 - Textos de la interfaz: `content/i18n/es.ts` y `content/i18n/en.ts`
 
 ## Deploy

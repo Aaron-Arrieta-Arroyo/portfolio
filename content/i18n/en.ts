@@ -46,7 +46,7 @@ const en: Dictionary = {
     body:
       "Today I work with Drupal 10/11 for public- and private-sector clients, and outside of that I ship with .NET, Laravel, Spring Boot and Kotlin. I care about clean architecture, headless Drupal with Next.js and web security.",
     stats: [
-      { value: 30, suffix: "+", label: "Merged team PRs" },
+      { value: 40, suffix: "+", label: "Merged team PRs" },
       { text: "D10→11", label: "Core migration led" },
       { value: 4, suffix: "+", label: "Languages in real projects" },
     ],
@@ -54,6 +54,29 @@ const en: Dictionary = {
   experience: {
     work: "Work",
     education: "Education",
+  },
+  projects: {
+    intro: "Team and personal projects: the problem they solved and what I built.",
+    all: "All",
+    filterLabel: "Filter projects",
+    view: "View case",
+    featured: "Featured",
+    prs: "Merged PRs",
+    back: "Back to projects",
+    role: "Role",
+    team: "Team",
+    teamOf: "{n} people",
+    solo: "Solo",
+    year: "Year",
+    stack: "Stack",
+    links: "Links",
+    problem: "Problem",
+    contribution: "What I built",
+    architecture: "Architecture",
+    learnings: "Learnings",
+    next: "Next project",
+    countOne: "{n} project",
+    countMany: "{n} projects",
   },
   stack: {
     intro: "Tools I use day to day and in team projects.",
