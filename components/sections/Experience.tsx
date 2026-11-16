@@ -86,8 +86,20 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
                 </svg>
                 {locale === "es" ? "Completado" : "Complete"}
               </span>
-              <h3 className="text-lg leading-snug text-text">{course.title}</h3>
+              <h3 className="text-lg leading-snug text-text">
+                <a
+                  href={course.verify}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors duration-[180ms] after:absolute after:inset-0 after:z-[2] hover:text-accent"
+                >
+                  {course.title}
+                </a>
+              </h3>
               <p className="text-sm leading-relaxed text-muted">{course.detail[locale]}</p>
+              <span className="label-mono mt-auto pt-2 text-subtle transition-colors duration-[180ms] group-hover:text-accent">
+                {locale === "es" ? "Ver certificado ↗" : "View certificate ↗"}
+              </span>
             </Reveal>
           ))}
           <li aria-hidden className="hidden bg-surface sm:block" />

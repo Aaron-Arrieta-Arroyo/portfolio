@@ -2,6 +2,8 @@ import type { Localized } from "./types";
 
 export type Course = {
   title: string;
+  /** Public certificate on verify.skilljar.com. */
+  verify: string;
   /** One line on what the course covers. */
   detail: Localized;
 };
@@ -12,6 +14,7 @@ export const coursesIssuer = "Anthropic Academy";
 export const courses: Course[] = [
   {
     title: "Claude Code in Action",
+    verify: "https://verify.skilljar.com/c/rp2icqurn7c3",
     detail: {
       es: "Sesiones largas y autónomas de Claude Code: dirigir, configurar, automatizar y verificar.",
       en: "Long, hands-off Claude Code sessions: steer, configure, automate and verify.",
@@ -19,6 +22,7 @@ export const courses: Course[] = [
   },
   {
     title: "Claude Code 101",
+    verify: "https://verify.skilljar.com/c/jj4fpsvew2vn",
     detail: {
       es: "Claude Code en el flujo diario de desarrollo.",
       en: "Claude Code in the daily development workflow.",
@@ -26,6 +30,7 @@ export const courses: Course[] = [
   },
   {
     title: "Introduction to Claude Cowork",
+    verify: "https://verify.skilljar.com/c/2gak48ja6mv7",
     detail: {
       es: "Trabajo con IA sobre archivos y proyectos reales: plugins, skills y tareas de varios pasos.",
       en: "Working with AI on real files and projects: plugins, skills and multi-step tasks.",
@@ -33,6 +38,7 @@ export const courses: Course[] = [
   },
   {
     title: "AI Fluency: Framework & Foundations",
+    verify: "https://verify.skilljar.com/c/23dbrjp9zcmc",
     detail: {
       es: "Colaborar con sistemas de IA de forma efectiva, eficiente, ética y segura.",
       en: "Collaborating with AI systems effectively, efficiently, ethically and safely.",
@@ -40,6 +46,7 @@ export const courses: Course[] = [
   },
   {
     title: "Claude 101",
+    verify: "https://verify.skilljar.com/c/gvdcus5ovht5",
     detail: {
       es: "Uso de Claude para el trabajo diario y sus funciones principales.",
       en: "Using Claude for everyday work and its core features.",
