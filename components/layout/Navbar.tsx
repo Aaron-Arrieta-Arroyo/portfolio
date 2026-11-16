@@ -109,7 +109,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
           className="relative grid size-8 place-items-center rounded-full border border-border bg-bg font-mono text-xs font-semibold tracking-tight text-text transition-colors duration-[180ms] hover:border-accent"
         >
           {profile.initials}
-          <span aria-hidden className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-accent" />
         </Link>
 
         {/* Desktop */}
