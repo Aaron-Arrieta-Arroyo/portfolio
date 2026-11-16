@@ -54,12 +54,14 @@ Todo el texto vive en `content/`; no hace falta tocar componentes.
 
 ## Actualizar el CV en PDF
 
-El PDF sale de imprimir la página `/cv` (que ya tiene estilos de impresión, A4, una página):
+Los PDF salen de los Word en `docs/cv/` (mismo formato en los dos idiomas):
 
-1. `npm run build && npm run start`
-2. Abrir `http://localhost:3000/cv` → Ctrl+P → **Guardar como PDF**, A4, márgenes predeterminados,
-   con **gráficos de fondo** activados.
-3. Guardar como `public/cv/aaron-arrieta-cv-es.pdf`. Repetir con `/en/cv` → `aaron-arrieta-cv-en.pdf`.
+| Idioma | Word (editar) | PDF (lo que se descarga) |
+|---|---|---|
+| Español | `docs/cv/CV_Aaron_Arrieta_Arroyo.docx` | `public/cv/aaron-arrieta-cv-es.pdf` |
+| Inglés | `docs/cv/CV_Aaron_Arrieta_Arroyo_EN.docx` | `public/cv/aaron-arrieta-cv-en.pdf` |
+
+Editá el Word, exportalo a PDF (Archivo → Guardar como → PDF) y reemplazá el archivo de `public/cv/`.
 
 ## Atajos
 
