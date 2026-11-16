@@ -22,9 +22,14 @@ const es = {
   },
   hero: {
     status: "Disponible para nuevos proyectos",
-    greeting: "Hola, soy",
+    greetings: ["Hola, soy", "Hello, I'm", "Pura vida, soy"],
     role: "Software Developer —",
     roleSub: "backend, web & mobile.",
+    ctaProjects: "Ver proyectos",
+    ctaCv: "Descargar CV",
+    scroll: "Scroll",
+    photoAlt: "Retrato de Aarón Arrieta sonriendo, con camisa negra",
+    photoCaption: "Costa Rica · UTC−6",
   },
   footer: {
     madeWith: "Hecho con Next.js",

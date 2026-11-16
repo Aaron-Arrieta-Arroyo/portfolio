@@ -114,6 +114,21 @@ h3 {
   animation: pulse-dot 2.4s var(--ease) infinite;
 }
 
+/* Scroll indicator arrow */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@utility bob {
+  animation: bob 1.8s var(--ease) infinite;
+}
+
 /* Lenis */
 html.lenis,
 html.lenis body {

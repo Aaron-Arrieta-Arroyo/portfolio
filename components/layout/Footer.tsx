@@ -1,7 +1,6 @@
 import { profile } from "@/content/profile";
+import { Year } from "@/components/ui/Year";
 import type { Dictionary } from "@/content/i18n";
-
-const year = 2026;
 
 export function Footer({ dict }: { dict: Dictionary }) {
   const links = [
@@ -15,7 +14,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
       <div className="container-site flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <p className="label-mono flex flex-wrap items-center gap-x-3 gap-y-2 leading-relaxed text-muted">
           <span>
-            © {year} {profile.name}
+            © <Year /> {profile.name}
           </span>
           <span aria-hidden className="text-subtle">·</span>
           <span>{dict.footer.madeWith}</span>
