@@ -11,7 +11,13 @@ export function Footer({ dict }: { dict: Dictionary }) {
   ];
 
   return (
-    <footer data-print-hide className="border-t border-border">
+    <footer data-print-hide className="overflow-hidden border-t border-border">
+      <div className="container-site pt-16">
+        <p aria-hidden className="wordmark select-none whitespace-nowrap font-semibold">
+          {profile.name}
+          <span className="text-accent [-webkit-text-stroke:0]">.</span>
+        </p>
+      </div>
       <div className="container-site flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <p className="label-mono flex flex-wrap items-center gap-x-3 gap-y-2 leading-relaxed text-muted">
           <span>

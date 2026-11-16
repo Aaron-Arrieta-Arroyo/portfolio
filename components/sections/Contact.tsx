@@ -54,7 +54,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
               type="button"
               onClick={copy}
               aria-label={dict.contact.copyLabel}
-              className="inline-flex h-10 items-center rounded-full bg-text px-4 text-sm font-medium text-bg transition-colors duration-[180ms] hover:bg-accent sm:px-5"
+              className="btn-shine inline-flex h-10 items-center rounded-full bg-text px-4 text-sm font-medium text-bg transition-colors duration-[180ms] hover:bg-accent sm:px-5"
             >
               {dict.contact.copy}
             </button>

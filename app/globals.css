@@ -295,3 +295,211 @@ html.lenis body {
     animation: none !important;
   }
 }
+
+/* ── Extra motion layer (scroll progress, hero ambience, spotlight, shine, wordmark) ── */
+
+/* Reading progress: pure CSS scroll-driven animation, no JS. */
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 70;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent));
+    transform-origin: 0 50%;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+/* Hero ambience: fine grid fading out + a slow drifting amber light. */
+.hero-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, black 10%, transparent 75%);
+  opacity: 0.55;
+}
+@keyframes drift {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-4%, 8%, 0) scale(0.95);
+  }
+}
+.hero-orb {
+  background: radial-gradient(circle, rgba(233, 161, 91, 0.16), transparent 62%);
+  filter: blur(40px);
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+/* Name letters lift on hover. */
+.letter-hover {
+  display: inline-block;
+  transition:
+    transform 350ms var(--ease),
+    color 350ms var(--ease);
+}
+.letter-hover:hover {
+  transform: translateY(-0.08em) rotate(-3deg);
+  color: var(--accent);
+}
+
+/* Spotlight that follows the cursor inside cards (position set by SpotlightTracker). */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(233, 161, 91, 0.09), transparent 60%);
+  opacity: 0;
+  transition: opacity 350ms var(--ease);
+}
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+
+/* Light sweep across primary buttons. */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  transform: translateX(130%);
+  transition: transform 800ms var(--ease);
+}
+
+/* Words light up one by one (WordsReveal). */
+.word {
+  display: inline-block;
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease),
+    filter 600ms var(--ease);
+}
+[data-armed] .word {
+  opacity: 0.12;
+  transform: translateY(0.25em);
+  filter: blur(3px);
+}
+[data-armed][data-shown] .word {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Footer wordmark rises as it scrolls into view. */
+.wordmark {
+  font-size: clamp(3.5rem, 15vw, 14rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  transition:
+    color 600ms var(--ease),
+    -webkit-text-stroke-color 600ms var(--ease);
+}
+.wordmark:hover {
+  -webkit-text-stroke-color: var(--accent);
+}
+@keyframes wordmark-rise {
+  from {
+    transform: translateY(40%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@supports (animation-timeline: view()) {
+  .wordmark {
+    animation: wordmark-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+}
+
+/* Cursor ring (desktop only, see CursorFollower). */
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(233, 161, 91, 0.6);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 300ms var(--ease),
+    width 300ms var(--ease),
+    height 300ms var(--ease),
+    margin 300ms var(--ease),
+    background-color 300ms var(--ease);
+}
+.cursor-ring[data-visible] {
+  opacity: 1;
+}
+.cursor-ring[data-active] {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  background-color: rgba(233, 161, 91, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb,
+  .wordmark {
+    animation: none !important;
+  }
+  [data-armed] .word {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .cursor-ring {
+    display: none;
+  }
+}
+@media print {
+  .scroll-progress,
+  .cursor-ring {
+    display: none !important;
+  }
+}

@@ -54,7 +54,7 @@ function Name({ text }: { text: string }) {
         className={`anim-letter inline-block ${accent ? "text-accent" : ""}`}
         style={{ animationDelay: `${delay}s` }}
       >
-        {char}
+        <span className="letter-hover">{char}</span>
       </span>
     );
   };
@@ -116,6 +116,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       }}
       onPointerLeave={() => glowOpacity.set(0)}
     >
+      {/* Ambient grid + slow drifting light (CSS only) */}
+      <div aria-hidden className="hero-grid pointer-events-none absolute inset-0" />
+      <div aria-hidden className="hero-orb pointer-events-none absolute right-[-10%] top-[5%] size-[70vmin]" />
       {/* Warm ambient light behind the portrait + cursor halo */}
       <div
         aria-hidden
@@ -188,7 +191,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Magnetic>
               <Link
                 href={`${base}/#projects`}
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-text px-5 text-sm sm:px-6 font-medium text-bg transition-colors duration-[180ms] hover:bg-accent"
+                className="btn-shine group inline-flex h-12 items-center gap-2 rounded-full bg-text px-5 text-sm sm:px-6 font-medium text-bg transition-colors duration-[180ms] hover:bg-accent"
               >
                 {dict.hero.ctaProjects}
                 <span aria-hidden className="transition-transform duration-[350ms] ease-soft group-hover:translate-x-1">

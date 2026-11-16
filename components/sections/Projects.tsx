@@ -17,6 +17,7 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
     <Tilt className="h-full">
       <Link
         href={`${localeBase(locale)}/projects/${project.slug}`}
+        data-spotlight
         className="group flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-[350ms] ease-soft hover:border-accent"
       >
         <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-bg">

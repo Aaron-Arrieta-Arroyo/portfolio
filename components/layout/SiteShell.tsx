@@ -3,6 +3,8 @@ import { GeistMono } from "geist/font/mono";
 import { Providers } from "@/components/motion/Providers";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { Grain } from "@/components/ui/Grain";
+import { CursorFollower } from "@/components/motion/CursorFollower";
+import { SpotlightTracker } from "@/components/motion/SpotlightTracker";
 import { getDictionary, type Locale } from "@/content/i18n";
 import { personJsonLd } from "./metadata";
 import { Footer } from "./Footer";
@@ -33,6 +35,9 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
           <Footer dict={dict} />
           <CommandPalette locale={locale} dict={dict} />
         </Providers>
+        <div aria-hidden className="scroll-progress" />
+        <SpotlightTracker />
+        <CursorFollower />
         <Grain />
       </body>
     </html>

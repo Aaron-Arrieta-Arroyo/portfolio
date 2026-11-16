@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { Scramble } from "@/components/motion/Scramble";
 import { sections, type SectionId } from "@/content/profile";
 
 type SectionProps = {
@@ -18,7 +19,7 @@ export function Section({ id, label, children }: SectionProps) {
           <h2 id={`${id}-label`} className="label-mono flex items-center gap-3 font-normal text-muted">
             <span className="text-accent">{number}</span>
             <span aria-hidden className="text-subtle">/</span>
-            {label}
+            <Scramble text={label} />
           </h2>
         </Reveal>
         {children}
