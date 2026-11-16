@@ -121,7 +121,6 @@ export function CvPage({ locale }: { locale: Locale }) {
                     <p className="font-mono text-[11.5px] text-neutral-500 print:text-[9.5px]">
                       {p.year}
                       {p.status && ` · ${p.status[locale]}`}
-                      {p.prs && ` · ${p.prs} PRs`}
                     </p>
                   </div>
                   <p className="mt-1 text-neutral-700">{p.summary[locale]}</p>

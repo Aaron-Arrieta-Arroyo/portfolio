@@ -19,8 +19,6 @@ export type Project = {
   learnings: Localized;
   stack: string[];
   tags: ProjectTag[];
-  /** Merged PRs authored by Aarón (from GitHub). */
-  prs?: number;
   links: { label: string; href: string }[];
   /** Card / hero image (16:10). Without it a typographic cover is drawn. */
   cover?: string;
@@ -66,12 +64,11 @@ export const projects: Project[] = [
       { name: "PostgreSQL", detail: { es: "Hábitos, tareas, evidencias y progreso", en: "Habits, tasks, evidence and progress" } },
     ],
     learnings: {
-      es: "Diseñar contratos de API pensando en el cliente móvil, devolver errores de forma uniforme y coordinar a cinco personas con PRs pequeños y revisados.",
-      en: "Designing API contracts with the mobile client in mind, returning errors consistently, and coordinating five people through small, reviewed PRs.",
+      es: "Diseñar contratos de API pensando en el cliente móvil, devolver errores de forma uniforme y coordinar a cinco personas con cambios pequeños y revisados.",
+      en: "Designing API contracts with the mobile client in mind, returning errors consistently, and coordinating five people through small, reviewed changes.",
     },
     stack: [".NET 9", "C#", "PostgreSQL", "JWT", "Kotlin", "Android"],
     tags: ["Backend", "Mobile"],
-    prs: 17,
     links: [
       { label: "Backend", href: "https://github.com/jasonTIZ/LevelUpLife-Backend" },
       { label: "Android", href: "https://github.com/jasonTIZ/LevelUpLife-Frontend" },
@@ -121,12 +118,11 @@ export const projects: Project[] = [
       { name: "MySQL 8 · Docker", detail: { es: "Datos y entorno reproducible; CI en GitHub Actions", en: "Data and reproducible environment; CI on GitHub Actions" } },
     ],
     learnings: {
-      es: "Trabajar con historias de usuario y criterios de aceptación, mantener PRs revisables y sostener la calidad con CI y análisis estático en un proyecto que crecía cada semana.",
-      en: "Working from user stories and acceptance criteria, keeping PRs reviewable, and holding quality with CI and static analysis on a project that grew every week.",
+      es: "Trabajar con historias de usuario y criterios de aceptación, mantener cambios fáciles de revisar y sostener la calidad con CI y análisis estático en un proyecto que crecía cada semana.",
+      en: "Working from user stories and acceptance criteria, keeping changes easy to review, and holding quality with CI and static analysis on a project that grew every week.",
     },
     stack: ["Laravel 13", "PHP", "React", "Inertia", "Tailwind", "MySQL", "Docker", "GitHub Actions"],
     tags: ["Web", "Backend"],
-    prs: 26,
     links: [{ label: "GitHub", href: "https://github.com/Darwin-Nunez-10/Ciclo_Finca_4_App" }],
     cover: "/images/projects/ciclo-finca-4.webp",
     coverAlt: {
@@ -152,12 +148,12 @@ export const projects: Project[] = [
       es: [
         "Diseño de las pantallas del flujo de reporte: incidente, ubicación, evidencia, resumen, mis reportes y detalle, en modo claro y oscuro.",
         "Tickets correctivos de QA en Jira, separados por repositorio y con orden de dependencia.",
-        "Arquitectura en tres repositorios: contratos de API, backend y web, con un PR por cambio.",
+        "Arquitectura en tres repositorios: contratos de API, backend y web, con revisión de código en cada cambio.",
       ],
       en: [
         "Screen design for the report flow: incident, location, evidence, summary, my reports and detail, in light and dark mode.",
         "Corrective QA tickets in Jira, split by repository and ordered by dependency.",
-        "Architecture across three repositories: API contracts, backend and web, one PR per change.",
+        "Architecture across three repositories: API contracts, backend and web, with code review on every change.",
       ],
     },
     architecture: [

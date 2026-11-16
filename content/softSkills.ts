@@ -20,7 +20,7 @@ export const softSkills: { label: Localized; detail: Localized }[] = [
   },
   {
     label: { es: "Trabajo en equipo", en: "Teamwork" },
-    detail: { es: "PRs revisados, Scrum y comunicación constante con el equipo.", en: "Reviewed PRs, Scrum and constant communication with the team." },
+    detail: { es: "Revisión de código, Scrum y comunicación constante con el equipo.", en: "Code review, Scrum and constant communication with the team." },
   },
   {
     label: { es: "Trabajo bajo presión", en: "Working under pressure" },

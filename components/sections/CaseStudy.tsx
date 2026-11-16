@@ -32,7 +32,6 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
     { label: t.role, value: project.role[locale] },
     { label: t.team, value: project.team ? fmt(t.teamOf, project.team) : t.solo },
     { label: t.year, value: project.status ? `${project.year} · ${project.status[locale]}` : project.year },
-    ...(project.prs ? [{ label: t.prs, value: String(project.prs) }] : []),
   ];
 
   return (
