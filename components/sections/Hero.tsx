@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { m, AnimatePresence, useMotionTemplate, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { m, AnimatePresence, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EASE } from "@/components/motion/Providers";
 import { profile } from "@/content/profile";
@@ -85,7 +85,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const gy = useSpring(my, { stiffness: 120, damping: 24 });
   const glowOpacity = useMotionValue(0);
   const glowFade = useSpring(glowOpacity, { stiffness: 80, damping: 20 });
-  const glow = useMotionTemplate`radial-gradient(560px circle at ${gx}px ${gy}px, rgba(233,161,91,0.06), transparent 70%)`;
 
   // Photo drifts up slightly as the hero scrolls away.
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -106,7 +105,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     <section
       id="top"
       ref={ref}
-      className="relative flex min-h-dvh flex-col overflow-hidden"
+      className="relative flex min-h-svh flex-col overflow-hidden"
       onPointerMove={(e) => {
         if (reduce || e.pointerType !== "mouse") return;
         const rect = e.currentTarget.getBoundingClientRect();
@@ -126,8 +125,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       />
       <m.div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: glow, opacity: glowFade }}
+        className="pointer-events-none absolute left-0 top-0 -ml-[560px] -mt-[560px] size-[1120px] rounded-full bg-[radial-gradient(closest-side,rgba(233,161,91,0.06),transparent)]"
+        style={{ x: gx, y: gy, opacity: glowFade }}
       />
 
       <div className="container-site relative flex flex-1 flex-col gap-8 pb-8 pt-24 lg:grid lg:grid-cols-12 lg:grid-rows-[1fr_auto] lg:items-center lg:gap-x-6 lg:gap-y-10 lg:pt-28">

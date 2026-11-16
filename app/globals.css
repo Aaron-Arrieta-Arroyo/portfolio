@@ -345,8 +345,8 @@ html.lenis body {
   }
 }
 .hero-orb {
-  background: radial-gradient(circle, rgba(233, 161, 91, 0.16), transparent 62%);
-  filter: blur(40px);
+  background: radial-gradient(circle closest-side, rgba(233, 161, 91, 0.13), transparent);
+  will-change: transform;
   animation: drift 22s ease-in-out infinite alternate;
 }
 
@@ -527,14 +527,12 @@ html.lenis body {
 }
 @keyframes card-in {
   from {
-    opacity: 0.35;
-    translate: 0 32px;
-    scale: 0.94;
+    opacity: 0.4;
+    translate: 0 24px;
   }
   to {
     opacity: 1;
     translate: 0 0;
-    scale: 1;
   }
 }
 
@@ -588,8 +586,8 @@ html.lenis body {
     }
   }
 
-  /* Cheaper ambient light on phones. */
-  .hero-orb {
-    filter: blur(24px);
+  /* Words: no per-word blur on phones, opacity + rise only. */
+  [data-armed] .word {
+    filter: none;
   }
 }

@@ -32,12 +32,12 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
             </div>
           </ViewTransition>
           {big && (
-            <span className="label-mono absolute left-4 top-4 rounded-full border border-border bg-bg/80 px-3 py-2 text-text backdrop-blur">
+            <span className="label-mono absolute left-4 top-4 rounded-full border border-border bg-bg/90 px-3 py-2 text-text">
               {dict.projects.featured}
             </span>
           )}
           {project.status && (
-            <span className="label-mono absolute right-4 top-4 rounded-full border border-border bg-bg/80 px-3 py-2 text-accent backdrop-blur">
+            <span className="label-mono absolute right-4 top-4 rounded-full border border-border bg-bg/90 px-3 py-2 text-accent">
               {project.status[locale]}
             </span>
           )}

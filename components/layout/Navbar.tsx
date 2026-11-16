@@ -101,7 +101,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
     <header data-print-hide className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         aria-label={dict.nav.menu}
-        className="relative z-50 flex h-12 w-full max-w-[860px] items-center justify-between gap-6 rounded-full border border-border bg-surface/70 pl-2 pr-5 backdrop-blur-xl md:w-auto md:justify-start"
+        className="relative z-50 flex h-12 w-full max-w-[860px] items-center justify-between gap-6 rounded-full border border-border bg-surface/90 pl-2 pr-5 backdrop-blur-md md:bg-surface/70 md:backdrop-blur-xl md:w-auto md:justify-start"
       >
         <Link
           href={`${base}/#top`}

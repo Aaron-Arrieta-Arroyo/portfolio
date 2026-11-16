@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function GlobalNotFound() {
   return (
     <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="min-h-dvh">
+      <body className="min-h-svh">
         <main>
           <NotFoundTerminal
             title={es.notFound.title}

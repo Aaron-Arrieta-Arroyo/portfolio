@@ -12,7 +12,7 @@ type Props = {
 /** 404 styled as a terminal: "cd: no such page". */
 export function NotFoundTerminal({ title, body, links, alt }: Props) {
   return (
-    <section className="flex min-h-dvh items-center py-28">
+    <section className="flex min-h-svh items-center py-28">
       <div className="container-site max-w-[760px]">
         <p className="label-mono flex items-center gap-3 text-muted">
           <span className="text-accent">404</span>

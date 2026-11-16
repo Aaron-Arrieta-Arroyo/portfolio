@@ -16,7 +16,7 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
 
   return (
     <html lang={locale} className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="min-h-dvh">
+      <body className="min-h-svh">
         <script
           type="application/ld+json"
           // JSON built from our own static content; "<" is escaped so it can't close the tag.
