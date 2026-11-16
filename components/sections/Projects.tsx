@@ -18,7 +18,7 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
       <Link
         href={`${localeBase(locale)}/projects/${project.slug}`}
         data-spotlight
-        className="group flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-[350ms] ease-soft hover:border-accent"
+        className="card-in group flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-[350ms] ease-soft hover:border-accent"
       >
         <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-bg">
           {/* Shared element: morphs into the case-study hero on navigation (View Transitions). */}

@@ -503,3 +503,93 @@ html.lenis body {
     display: none !important;
   }
 }
+
+/* ── Touch devices: the same feeling without hover ── */
+@keyframes letter-wave {
+  0%,
+  100% {
+    transform: none;
+    color: inherit;
+  }
+  40% {
+    transform: translateY(-0.1em);
+    color: var(--accent);
+  }
+}
+@keyframes shine-loop {
+  0%,
+  70% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+@keyframes card-in {
+  from {
+    opacity: 0.35;
+    translate: 0 32px;
+    scale: 0.94;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  /* Name: one amber wave right after it appears; tap a letter to make it jump again. */
+  .letter-hover {
+    animation: letter-wave 700ms var(--ease) var(--wave, 1.6s) both;
+  }
+  .letter-hover:active {
+    transform: translateY(-0.1em) rotate(-3deg);
+    color: var(--accent);
+  }
+
+  /* Primary buttons shine on their own every few seconds. */
+  .btn-shine::after {
+    animation: shine-loop 4.5s var(--ease) 2.5s infinite;
+  }
+
+  /* The card in the middle of the screen lights up (set by SpotlightTracker). */
+  [data-spotlight]::before {
+    background: radial-gradient(120% 90% at 50% 0%, rgba(233, 161, 91, 0.1), transparent 65%);
+    transition: opacity 500ms var(--ease);
+  }
+  [data-spotlight][data-lit]::before {
+    opacity: 1;
+  }
+  .card-in[data-lit] {
+    border-color: rgba(233, 161, 91, 0.45);
+  }
+
+  /* Pressing anything gives physical feedback ("scale" composes with motion's inline transforms). */
+  a,
+  button,
+  [data-spotlight] {
+    -webkit-tap-highlight-color: transparent;
+    transition-property: scale, color, background-color, border-color, opacity;
+    transition-duration: 180ms;
+  }
+  a:active,
+  button:active,
+  [data-spotlight]:active {
+    scale: 0.97;
+  }
+
+  /* Project cards rise into place as you scroll (pure CSS, no JS). */
+  @supports (animation-timeline: view()) {
+    .card-in {
+      animation: card-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+
+  /* Cheaper ambient light on phones. */
+  .hero-orb {
+    filter: blur(24px);
+  }
+}

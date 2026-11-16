@@ -52,7 +52,7 @@ function Name({ text }: { text: string }) {
       <span
         key={count}
         className={`anim-letter inline-block ${accent ? "text-accent" : ""}`}
-        style={{ animationDelay: `${delay}s` }}
+        style={{ animationDelay: `${delay}s`, ["--wave" as string]: `${delay + 1.1}s` }}
       >
         <span className="letter-hover">{char}</span>
       </span>
