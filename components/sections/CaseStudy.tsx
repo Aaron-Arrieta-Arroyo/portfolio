@@ -2,6 +2,7 @@ import { ViewTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { Scramble } from "@/components/motion/Scramble";
 import { DemoVideo } from "@/components/ui/DemoVideo";
 import { ProjectCover } from "@/components/ui/ProjectCover";
 import { nextProject, type Project } from "@/content/projects";
@@ -13,7 +14,7 @@ function Block({ n, title, children }: { n: number; title: string; children: Rea
       <Reveal className="md:col-span-4">
         <h2 className="label-mono flex items-center gap-3 font-normal text-muted">
           <span className="text-accent">{String(n).padStart(2, "0")}</span>
-          {title}
+          <Scramble text={title} />
         </h2>
       </Reveal>
       <Reveal delay={0.06} className="md:col-span-8">
@@ -60,30 +61,35 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           </p>
         </Reveal>
 
-        <Reveal delay={0.18}>
-          <dl
+        <dl
             className={`mt-12 grid grid-cols-2 gap-3 ${
               meta.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3"
             }`}
           >
             {meta.map((m, i) => (
-              <div
+              <Reveal
                 key={m.label}
+                delay={0.18 + 0.06 * i}
+                data-spotlight
                 className={`glass-card rounded-card p-5 ${meta.length % 2 === 1 && i === meta.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
               >
                 <dt className="label-mono text-muted">{m.label}</dt>
                 <dd className="mt-3 leading-snug">{m.value}</dd>
-              </div>
+              </Reveal>
             ))}
           </dl>
-        </Reveal>
 
         <Reveal delay={0.24} className="mt-6 flex flex-wrap items-center justify-between gap-4">
           <ul className="flex flex-wrap gap-1.5" aria-label={t.stack}>
-            {project.stack.map((s) => (
-              <li key={s} className="label-mono rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-muted">
+            {project.stack.map((s, i) => (
+              <Reveal
+                key={s}
+                as="li"
+                delay={0.3 + 0.035 * i}
+                className="label-mono rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-muted transition-colors duration-[180ms] hover:border-accent/50 hover:text-text"
+              >
                 {s}
-              </li>
+              </Reveal>
             ))}
           </ul>
           {project.links.length > 0 && (
@@ -137,11 +143,11 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
 
           <Block n={2} title={t.contribution}>
             <ul className="max-w-[64ch] space-y-3.5">
-              {project.contribution[locale].map((c) => (
-                <li key={c} className="flex gap-3 leading-relaxed text-muted">
+              {project.contribution[locale].map((c, i) => (
+                <Reveal key={c} as="li" delay={0.08 * i} className="flex gap-3 leading-relaxed text-muted">
                   <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-accent" />
                   <span className="text-text">{c}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </Block>
@@ -149,8 +155,13 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           <Block n={3} title={t.architecture}>
             <ol className="flex flex-col items-stretch gap-2 md:flex-row md:items-center">
               {project.architecture.map((layer, i) => (
-                <li key={layer.name} className="flex flex-1 flex-col items-stretch gap-2 md:flex-row md:items-center">
-                  <div className="flex-1 rounded-card glass-card p-5">
+                <Reveal
+                  key={layer.name}
+                  as="li"
+                  delay={0.1 * i}
+                  className="flex flex-1 flex-col items-stretch gap-2 md:flex-row md:items-center"
+                >
+                  <div data-spotlight className="flex-1 rounded-card glass-card p-5">
                     <p className="label-mono text-accent">{String(i + 1).padStart(2, "0")}</p>
                     <p className="mt-3 font-medium">{layer.name}</p>
                     <p className="mt-1 text-sm leading-relaxed text-muted">{layer.detail[locale]}</p>
@@ -161,7 +172,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
                       <span className="hidden md:inline">→</span>
                     </span>
                   )}
-                </li>
+                </Reveal>
               ))}
             </ol>
           </Block>
@@ -171,6 +182,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
               {project.gallery.map((img) => (
                 <Reveal
                   key={img.src}
+                  data-spotlight
                   className={`relative overflow-hidden rounded-card glass-card ${
                     img.kind === "desktop" ? "aspect-[1503/764] md:col-span-2" : "mx-auto aspect-[460/955] w-full max-w-[340px]"
                   }`}
@@ -195,6 +207,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
         <Reveal>
           <Link
             href={`${base}/projects/${next.slug}`}
+            data-spotlight
             className="group mt-8 grid gap-6 rounded-card glass-card p-6 transition-colors duration-[350ms] ease-soft hover:border-accent md:grid-cols-12 md:items-center md:p-8"
           >
             <div className="md:col-span-5">
