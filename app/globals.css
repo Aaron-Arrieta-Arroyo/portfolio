@@ -56,7 +56,8 @@ html {
 }
 
 body {
-  background: var(--bg);
+  /* Transparent on purpose: html paints the base color, so the fixed .ambient light layer shows through. */
+  background: transparent;
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -345,7 +346,7 @@ html.lenis body {
   }
 }
 .hero-orb {
-  background: radial-gradient(circle closest-side, rgba(233, 161, 91, 0.13), transparent);
+  background: radial-gradient(circle closest-side, rgba(233, 161, 91, 0.1), transparent);
   will-change: transform;
   animation: drift 22s ease-in-out infinite alternate;
 }
@@ -711,10 +712,18 @@ html.lenis body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Diagonal violet light beam + soft violet/blue corners. Static: painted once, composited for free. */
   background:
-    radial-gradient(42vmax 32vmax at 88% 8%, rgba(233, 161, 91, 0.075), transparent 70%),
-    radial-gradient(38vmax 30vmax at 6% 46%, rgba(120, 140, 255, 0.04), transparent 70%),
-    radial-gradient(46vmax 34vmax at 70% 96%, rgba(233, 161, 91, 0.05), transparent 70%);
+    linear-gradient(
+      118deg,
+      transparent 38%,
+      rgba(140, 110, 255, 0.07) 48%,
+      rgba(170, 130, 255, 0.11) 53%,
+      rgba(140, 110, 255, 0.06) 58%,
+      transparent 68%
+    ),
+    radial-gradient(44vmax 34vmax at 92% 0%, rgba(110, 80, 230, 0.16), transparent 70%),
+    radial-gradient(36vmax 30vmax at 0% 100%, rgba(60, 80, 200, 0.09), transparent 70%);
 }
 
 @media (hover: none) {
