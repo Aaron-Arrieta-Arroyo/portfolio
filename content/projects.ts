@@ -93,6 +93,14 @@ export const projects: Project[] = [
   {
     slug: "ciclo-finca-4",
     title: "Ciclo Finca 4",
+    video: {
+      src: "/videos/ciclo-finca-4-demo.mp4",
+      poster: "/videos/ciclo-finca-4-demo.webp",
+      label: {
+        es: "Demo de Ciclo Finca 4: tienda, carrito, facturas, panel de administración, reportes y auditoría",
+        en: "Ciclo Finca 4 demo: storefront, cart, invoices, admin panel, reports and audit log",
+      },
+    },
     year: "2026",
     team: 4,
     role: { es: "Full stack · Laravel", en: "Full stack · Laravel" },
