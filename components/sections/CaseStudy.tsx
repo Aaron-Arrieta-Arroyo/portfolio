@@ -2,6 +2,7 @@ import { ViewTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { DemoVideo } from "@/components/ui/DemoVideo";
 import { ProjectCover } from "@/components/ui/ProjectCover";
 import { nextProject, type Project } from "@/content/projects";
 import { fmt, getDictionary, localeBase, type Locale } from "@/content/i18n";
@@ -119,14 +120,11 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
               {t.demo}
             </p>
             <div className="glass-card overflow-hidden rounded-card p-1.5">
-              <video
+              <DemoVideo
                 className="block aspect-video w-full rounded-[calc(var(--radius-card)-6px)] bg-black"
                 src={project.video.src}
                 poster={project.video.poster}
-                controls
-                playsInline
-                preload="none"
-                aria-label={project.video.label[locale]}
+                label={project.video.label[locale]}
               />
             </div>
           </Reveal>
