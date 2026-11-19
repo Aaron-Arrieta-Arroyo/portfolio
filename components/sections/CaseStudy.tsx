@@ -112,6 +112,26 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           </ViewTransition>
         )}
 
+        {project.video && (
+          <Reveal className="mt-12">
+            <p className="label-mono mb-4 flex items-center gap-3 text-muted">
+              <span className="pulse-dot size-1.5 rounded-full bg-accent" aria-hidden />
+              {t.demo}
+            </p>
+            <div className="glass-card overflow-hidden rounded-card p-1.5">
+              <video
+                className="block aspect-video w-full rounded-[calc(var(--radius-card)-6px)] bg-black"
+                src={project.video.src}
+                poster={project.video.poster}
+                controls
+                playsInline
+                preload="none"
+                aria-label={project.video.label[locale]}
+              />
+            </div>
+          </Reveal>
+        )}
+
         <div className="mt-16">
           <Block n={1} title={t.problem}>
             <p className="max-w-[60ch] text-lg leading-relaxed text-text md:text-xl">{project.problem[locale]}</p>

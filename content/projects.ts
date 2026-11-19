@@ -24,6 +24,8 @@ export type Project = {
   cover?: string;
   coverAlt?: Localized;
   gallery?: { src: string; alt: Localized; kind: "phone" | "desktop" }[];
+  /** Short demo video (16:9) shown on the case study, with a poster frame. */
+  video?: { src: string; poster: string; label: Localized };
   featured?: boolean;
 };
 
@@ -133,6 +135,14 @@ export const projects: Project[] = [
   {
     slug: "safezone",
     title: "SafeZone",
+    video: {
+      src: "/videos/safezone-demo.mp4",
+      poster: "/videos/safezone-demo.webp",
+      label: {
+        es: "Demo de SafeZone: mapa de riesgo, reporte de incidentes y panel de administración",
+        en: "SafeZone demo: risk map, incident reporting and admin panel",
+      },
+    },
     year: "2026",
     team: 4,
     role: { es: "Diseño de producto, QA y arquitectura", en: "Product design, QA and architecture" },

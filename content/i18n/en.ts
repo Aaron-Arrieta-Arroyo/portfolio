@@ -73,6 +73,7 @@ const en: Dictionary = {
     problem: "Problem",
     contribution: "What I built",
     architecture: "Architecture",
+    demo: "Video demo",
     learnings: "Learnings",
     next: "Next project",
     countOne: "{n} project",

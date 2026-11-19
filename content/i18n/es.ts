@@ -74,6 +74,7 @@ const es = {
     problem: "Problema",
     contribution: "Mi aporte",
     architecture: "Arquitectura",
+    demo: "Demo en video",
     learnings: "Aprendizajes",
     next: "Siguiente proyecto",
     countOne: "{n} proyecto",
