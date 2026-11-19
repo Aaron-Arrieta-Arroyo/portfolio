@@ -33,6 +33,14 @@ export const projects: Project[] = [
   {
     slug: "leveluplife",
     title: "LevelUpLife",
+    video: {
+      src: "/videos/leveluplife-demo.mp4",
+      poster: "/videos/leveluplife-demo.webp",
+      label: {
+        es: "Demo de LevelUpLife: login, crear una tarea, ganar XP y subir de nivel en la app Android",
+        en: "LevelUpLife demo: login, creating a task, earning XP and leveling up in the Android app",
+      },
+    },
     year: "2026",
     team: 5,
     role: { es: "Backend (.NET) y Android (Kotlin)", en: "Backend (.NET) and Android (Kotlin)" },
