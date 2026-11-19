@@ -61,14 +61,14 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
 
         <Reveal delay={0.18}>
           <dl
-            className={`mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border ${
+            className={`mt-12 grid grid-cols-2 gap-3 ${
               meta.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3"
             }`}
           >
             {meta.map((m, i) => (
               <div
                 key={m.label}
-                className={`bg-surface p-5 ${meta.length % 2 === 1 && i === meta.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
+                className={`glass-card rounded-card p-5 ${meta.length % 2 === 1 && i === meta.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
               >
                 <dt className="label-mono text-muted">{m.label}</dt>
                 <dd className="mt-3 leading-snug">{m.value}</dd>
@@ -80,7 +80,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
         <Reveal delay={0.24} className="mt-6 flex flex-wrap items-center justify-between gap-4">
           <ul className="flex flex-wrap gap-1.5" aria-label={t.stack}>
             {project.stack.map((s) => (
-              <li key={s} className="label-mono rounded-full border border-border px-3 py-2 text-muted">
+              <li key={s} className="label-mono rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-muted">
                 {s}
               </li>
             ))}
@@ -106,7 +106,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
         {/* Only real screenshots get the big hero image; typographic covers stay on cards. */}
         {project.cover && (
           <ViewTransition name={`cover-${project.slug}`} share="morph" default="none">
-            <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-card border border-border bg-surface">
+            <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-card glass-card">
               <ProjectCover project={project} locale={locale} sizes="(min-width: 1200px) 1152px, 100vw" priority />
             </div>
           </ViewTransition>
@@ -132,7 +132,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
             <ol className="flex flex-col items-stretch gap-2 md:flex-row md:items-center">
               {project.architecture.map((layer, i) => (
                 <li key={layer.name} className="flex flex-1 flex-col items-stretch gap-2 md:flex-row md:items-center">
-                  <div className="flex-1 rounded-card border border-border bg-surface p-5">
+                  <div className="flex-1 rounded-card glass-card p-5">
                     <p className="label-mono text-accent">{String(i + 1).padStart(2, "0")}</p>
                     <p className="mt-3 font-medium">{layer.name}</p>
                     <p className="mt-1 text-sm leading-relaxed text-muted">{layer.detail[locale]}</p>
@@ -153,7 +153,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
               {project.gallery.map((img) => (
                 <Reveal
                   key={img.src}
-                  className={`relative overflow-hidden rounded-card border border-border bg-surface ${
+                  className={`relative overflow-hidden rounded-card glass-card ${
                     img.kind === "desktop" ? "aspect-[1503/764] md:col-span-2" : "mx-auto aspect-[460/955] w-full max-w-[340px]"
                   }`}
                 >
@@ -177,7 +177,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
         <Reveal>
           <Link
             href={`${base}/projects/${next.slug}`}
-            className="group mt-8 grid gap-6 rounded-card border border-border bg-surface p-6 transition-colors duration-[350ms] ease-soft hover:border-accent md:grid-cols-12 md:items-center md:p-8"
+            className="group mt-8 grid gap-6 rounded-card glass-card p-6 transition-colors duration-[350ms] ease-soft hover:border-accent md:grid-cols-12 md:items-center md:p-8"
           >
             <div className="md:col-span-5">
               <p className="label-mono text-muted">{t.next}</p>
@@ -189,7 +189,7 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
               </p>
               <p className="mt-4 leading-relaxed text-muted">{next.summary[locale]}</p>
             </div>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-border md:col-span-7">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-white/10 md:col-span-7">
               <div className="absolute inset-0 transition-transform duration-[700ms] ease-soft group-hover:scale-[1.03]">
                 <ProjectCover project={next} locale={locale} sizes="(min-width: 1024px) 660px, 100vw" />
               </div>

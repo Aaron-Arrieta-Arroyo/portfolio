@@ -38,6 +38,7 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
         <div aria-hidden className="scroll-progress" />
         <SpotlightTracker />
         <CursorFollower />
+        <div aria-hidden className="ambient" />
         <Grain />
       </body>
     </html>

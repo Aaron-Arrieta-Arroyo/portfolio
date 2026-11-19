@@ -101,12 +101,12 @@ export function Navbar({ locale, dict }: NavbarProps) {
     <header data-print-hide className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         aria-label={dict.nav.menu}
-        className="relative z-50 flex h-12 w-full max-w-[860px] items-center justify-between gap-6 rounded-full border border-border bg-surface/90 pl-2 pr-5 backdrop-blur-md md:bg-surface/70 md:backdrop-blur-xl md:w-auto md:justify-start"
+        className="relative z-50 flex h-12 w-full max-w-[860px] items-center justify-between gap-6 rounded-full glass/90 pl-2 pr-5 backdrop-blur-md md:bg-surface/70 md:backdrop-blur-xl md:w-auto md:justify-start"
       >
         <Link
           href={`${base}/#top`}
           aria-label={`${profile.name} — ${dict.nav.home}`}
-          className="relative grid size-8 place-items-center rounded-full border border-border bg-bg font-mono text-xs font-semibold tracking-tight text-text transition-colors duration-[180ms] hover:border-accent"
+          className="relative grid size-8 place-items-center rounded-full glass font-mono text-xs font-semibold tracking-tight text-text transition-colors duration-[180ms] hover:border-accent"
         >
           {profile.initials}
         </Link>
@@ -128,7 +128,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                     <m.span
                       layoutId="nav-active"
                       aria-hidden
-                      className="absolute inset-0 rounded-full bg-surface-2"
+                      className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.07]"
                       transition={{ duration: 0.35, ease: EASE }}
                     />
                   )}
@@ -181,7 +181,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
             role="dialog"
             aria-modal="true"
             aria-label={dict.nav.menu}
-            className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-10 pt-28 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-bg/80 px-6 backdrop-blur-2xl pb-10 pt-28 md:hidden"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}

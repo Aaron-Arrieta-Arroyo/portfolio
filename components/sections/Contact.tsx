@@ -45,7 +45,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
       </Reveal>
 
       <Reveal delay={0.12} className="mt-10">
-        <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-surface p-1.5 pl-5 transition-colors duration-[180ms] focus-within:border-accent hover:border-accent">
+        <div className="inline-flex max-w-full items-center gap-2 rounded-full glass p-1.5 pl-5 transition-colors duration-[180ms] focus-within:border-accent hover:border-accent">
           <a href={`mailto:${profile.email}`} className="min-w-0 truncate font-mono text-sm text-text sm:text-base">
             {profile.email}
           </a>
@@ -54,7 +54,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
               type="button"
               onClick={copy}
               aria-label={dict.contact.copyLabel}
-              className="btn-shine inline-flex h-10 items-center rounded-full bg-text px-4 text-sm font-medium text-bg transition-colors duration-[180ms] hover:bg-accent sm:px-5"
+              className="inline-flex h-10 items-center rounded-full glass-accent px-4 text-sm font-medium sm:px-5"
             >
               {dict.contact.copy}
             </button>
@@ -84,7 +84,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
         <AnimatePresence>
           {copied && (
             <m.p
-              className="label-mono flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-3 text-text"
+              className="label-mono flex items-center gap-2.5 rounded-full glass px-4 py-3 text-text"
               initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: 8 }}

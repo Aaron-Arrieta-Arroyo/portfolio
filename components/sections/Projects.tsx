@@ -18,7 +18,7 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
       <Link
         href={`${localeBase(locale)}/projects/${project.slug}`}
         data-spotlight
-        className="card-in group flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-[350ms] ease-soft hover:border-accent"
+        className="card-in group flex h-full flex-col overflow-hidden rounded-card glass-card transition-colors duration-[350ms] ease-soft hover:border-accent"
       >
         <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-bg">
           {/* Shared element: morphs into the case-study hero on navigation (View Transitions). */}
@@ -32,12 +32,12 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
             </div>
           </ViewTransition>
           {big && (
-            <span className="label-mono absolute left-4 top-4 rounded-full border border-border bg-bg/90 px-3 py-2 text-text">
+            <span className="label-mono absolute left-4 top-4 rounded-full glass px-3 py-2 text-text">
               {dict.projects.featured}
             </span>
           )}
           {project.status && (
-            <span className="label-mono absolute right-4 top-4 rounded-full border border-border bg-bg/90 px-3 py-2 text-accent">
+            <span className="label-mono absolute right-4 top-4 rounded-full glass px-3 py-2 text-accent">
               {project.status[locale]}
             </span>
           )}
@@ -55,14 +55,14 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
           <div className="mt-auto flex items-end justify-between gap-4 pt-2">
             <ul className="flex flex-wrap gap-1.5" aria-label={dict.projects.stack}>
               {project.stack.slice(0, big ? 6 : 3).map((s) => (
-                <li key={s} className="label-mono rounded-full border border-border px-2.5 py-1.5 text-muted">
+                <li key={s} className="label-mono rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-muted">
                   {s}
                 </li>
               ))}
             </ul>
             <span
               aria-hidden
-              className="grid size-10 shrink-0 place-items-center rounded-full border border-border text-muted transition-all duration-[350ms] ease-soft group-hover:border-accent group-hover:bg-accent group-hover:text-bg"
+              className="grid size-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-muted transition-all duration-[350ms] ease-soft group-hover:border-accent/60 group-hover:bg-accent/20 group-hover:text-[#ffe7cf]"
             >
               →
             </span>
@@ -94,14 +94,14 @@ export function ProjectsGrid({ locale, dict }: { locale: Locale; dict: Dictionar
                 aria-pressed={active}
                 onClick={() => setFilter(f.id)}
                 className={`relative rounded-full border px-4 py-2 text-sm transition-colors duration-[180ms] ${
-                  active ? "border-text text-bg" : "border-border text-muted hover:text-text"
+                  active ? "border-accent/50 text-[#ffe7cf]" : "border-white/10 bg-white/[0.03] text-muted hover:text-text"
                 }`}
               >
                 {active && (
                   <m.span
                     layoutId="project-filter"
                     aria-hidden
-                    className="absolute inset-0 rounded-full bg-text"
+                    className="absolute inset-0 rounded-full bg-gradient-to-b from-accent/30 to-accent/10 shadow-[inset_0_1px_0_rgba(255,220,180,0.25),0_8px_24px_-10px_rgba(233,161,91,0.5)]"
                     transition={{ duration: 0.35, ease: EASE }}
                   />
                 )}

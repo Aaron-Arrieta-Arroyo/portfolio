@@ -7,7 +7,7 @@ export function Now({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <Section id="now" label={dict.sections.now}>
       <Reveal className="mt-10">
-        <figure className="overflow-hidden rounded-card border border-border bg-surface">
+        <figure className="overflow-hidden rounded-card glass-card">
           <figcaption className="flex items-center gap-2 border-b border-border px-5 py-3.5">
             <span aria-hidden className="flex gap-1.5">
               <span className="size-2.5 rounded-full bg-surface-2 ring-1 ring-border" />

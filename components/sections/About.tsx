@@ -19,9 +19,9 @@ export function About({ dict }: { dict: Dictionary }) {
           </Reveal>
         </div>
 
-        <dl className="grid grid-cols-1 gap-px self-start overflow-hidden rounded-card border border-border bg-border sm:grid-cols-3 lg:col-span-4 lg:grid-cols-1">
+        <dl className="grid grid-cols-1 gap-3 self-start sm:grid-cols-3 lg:col-span-4 lg:grid-cols-1">
           {about.stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={0.06 * i} className="flex flex-col-reverse gap-2 bg-surface p-6" data-spotlight>
+            <Reveal key={stat.label} delay={0.06 * i} className="glass-card flex flex-col-reverse gap-2 rounded-card p-6" data-spotlight>
               <dt className="label-mono leading-snug text-muted">{stat.label}</dt>
               <dd className="text-[2.5rem] font-semibold leading-none tracking-[-0.03em]">
                 {stat.value !== undefined ? <Counter to={stat.value} suffix={stat.suffix} /> : stat.text}

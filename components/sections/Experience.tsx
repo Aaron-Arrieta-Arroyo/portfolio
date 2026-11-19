@@ -54,7 +54,7 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
               </ul>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">
                 {item.tags.map((tag) => (
-                  <li key={tag} className="label-mono rounded-full border border-border bg-surface px-3 py-2 text-muted">
+                  <li key={tag} className="label-mono rounded-full glass px-3 py-2 text-muted">
                     {tag}
                   </li>
                 ))}
@@ -71,13 +71,13 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
             {dict.experience.courses} · <span className="text-text">{coursesIssuer}</span>
           </p>
         </Reveal>
-        <ul className="mt-6 grid gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {courses.map((course, i) => (
             <Reveal
               key={course.title}
               as="li"
               delay={0.05 * i}
-              className="group flex flex-col gap-3 bg-surface p-6 transition-colors duration-[180ms] hover:bg-surface-2"
+              className="glass-card group flex flex-col gap-3 rounded-card p-6"
               data-spotlight
             >
               <span className="label-mono flex items-center gap-2 text-accent">
@@ -102,7 +102,6 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
               </span>
             </Reveal>
           ))}
-          <li aria-hidden className="hidden bg-surface sm:block" />
         </ul>
       </div>
     </Section>

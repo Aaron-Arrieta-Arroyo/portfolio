@@ -20,7 +20,7 @@ export function NotFoundTerminal({ title, body, links, alt }: Props) {
           {title}
         </p>
 
-        <figure className="anim-page mt-8 overflow-hidden rounded-card border border-border bg-surface">
+        <figure className="anim-page mt-8 overflow-hidden rounded-card glass-card">
           <figcaption className="flex items-center gap-2 border-b border-border px-5 py-3.5">
             <span aria-hidden className="flex gap-1.5">
               <span className="size-2.5 rounded-full bg-surface-2 ring-1 ring-border" />
@@ -60,8 +60,8 @@ export function NotFoundTerminal({ title, body, links, alt }: Props) {
               href={l.href}
               className={
                 l.primary
-                  ? "inline-flex h-12 items-center gap-2 rounded-full bg-text px-6 text-sm font-medium text-bg transition-colors duration-[180ms] hover:bg-accent"
-                  : "inline-flex h-12 items-center rounded-full border border-border bg-surface px-6 text-sm font-medium text-text transition-colors duration-[180ms] hover:border-accent"
+                  ? "inline-flex h-12 items-center gap-2 rounded-full glass-accent px-6 text-sm font-medium"
+                  : "inline-flex h-12 items-center rounded-full glass px-6 text-sm font-medium text-text transition-colors duration-[180ms] hover:border-accent"
               }
             >
               {l.label}

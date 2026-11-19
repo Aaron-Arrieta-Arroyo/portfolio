@@ -204,7 +204,7 @@ export function CommandPalette({ locale, dict }: { locale: Locale; dict: Diction
               role="dialog"
               aria-modal="true"
               aria-label={t.label}
-              className="w-full max-w-[560px] overflow-hidden rounded-card border border-border bg-surface"
+              className="w-full max-w-[560px] overflow-hidden rounded-card glass-card"
               initial={{ opacity: 0, y: 12, scale: 0.98, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -282,7 +282,7 @@ export function CommandPalette({ locale, dict }: { locale: Locale; dict: Diction
         <AnimatePresence>
           {toast && (
             <m.p
-              className="label-mono flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-3 text-text"
+              className="label-mono flex items-center gap-2.5 rounded-full glass px-4 py-3 text-text"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}

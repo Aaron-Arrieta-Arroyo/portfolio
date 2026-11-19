@@ -136,7 +136,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           style={{ y: photoY }}
         >
           <div
-            className="anim-clip-up relative aspect-[4/5] w-[42%] max-w-[190px] shrink-0 overflow-hidden rounded-card border border-border bg-surface lg:w-full lg:max-w-none"
+            className="anim-clip-up relative aspect-[4/5] w-[42%] max-w-[190px] shrink-0 overflow-hidden rounded-card glass-card lg:w-full lg:max-w-none"
             style={at(0.15)}
           >
             <div className="anim-zoom-out absolute inset-0" style={at(0.15)}>
@@ -162,7 +162,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         {/* Copy */}
         <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
           <p
-            className="anim-enter label-mono inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-3.5 py-2.5 text-muted"
+            className="anim-enter label-mono inline-flex items-center gap-2.5 rounded-full glass px-3.5 py-2.5 text-muted"
             style={at(0.05)}
           >
             <span aria-hidden className="pulse-dot size-1.5 rounded-full bg-accent" />
@@ -190,7 +190,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Magnetic>
               <Link
                 href={`${base}/#projects`}
-                className="btn-shine group inline-flex h-12 items-center gap-2 rounded-full bg-text px-5 text-sm sm:px-6 font-medium text-bg transition-colors duration-[180ms] hover:bg-accent"
+                className="group inline-flex h-12 items-center gap-2 rounded-full glass-accent px-5 text-sm sm:px-6 font-medium"
               >
                 {dict.hero.ctaProjects}
                 <span aria-hidden className="transition-transform duration-[350ms] ease-soft group-hover:translate-x-1">
@@ -202,7 +202,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <a
                 href={dict.cv.file}
                 download
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface px-5 text-sm font-medium text-text transition-colors duration-[180ms] hover:border-accent sm:px-6"
+                className="inline-flex h-12 items-center gap-2 rounded-full glass px-5 text-sm font-medium text-text transition-colors duration-[180ms] hover:border-accent sm:px-6"
               >
                 {dict.hero.ctaCv}
                 <span aria-hidden className="text-muted">
