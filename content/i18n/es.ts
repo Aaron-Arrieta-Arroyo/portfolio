@@ -21,6 +21,7 @@ const es = {
     projects: "Proyectos",
     stack: "Stack",
     now: "Ahora",
+    notes: "Escritos",
     contact: "Contacto",
   },
   hero: {
@@ -75,6 +76,8 @@ const es = {
     contribution: "Mi aporte",
     architecture: "Arquitectura",
     demo: "Demo en video",
+    metrics: "En números",
+    metricsNote: "Totales del proyecto, contados en el repositorio.",
     learnings: "Aprendizajes",
     next: "Siguiente proyecto",
     countOne: "{n} proyecto",
@@ -83,6 +86,12 @@ const es = {
   stack: {
     softTitle: "Habilidades blandas",
     intro: "Herramientas con las que trabajo a diario y en proyectos de equipo.",
+  },
+  notes: {
+    intro: "Lo que aprendo trabajando, escrito para que le sirva a alguien más.",
+    minutes: "{n} min de lectura",
+    back: "Volver a escritos",
+    more: "Seguir leyendo",
   },
   now: {
     title: "~/ahora",

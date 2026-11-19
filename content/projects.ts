@@ -24,6 +24,8 @@ export type Project = {
   cover?: string;
   coverAlt?: Localized;
   gallery?: { src: string; alt: Localized; kind: "phone" | "desktop" }[];
+  /** Real numbers counted from the repo (project totals, team work). */
+  metrics?: { value: string; label: Localized }[];
   /** Short demo video (16:9) shown on the case study, with a poster frame. */
   video?: { src: string; poster: string; label: Localized };
   featured?: boolean;
@@ -33,6 +35,12 @@ export const projects: Project[] = [
   {
     slug: "leveluplife",
     title: "LevelUpLife",
+    metrics: [
+      { value: "35", label: { es: "endpoints REST", en: "REST endpoints" } },
+      { value: "70", label: { es: "pruebas de la API", en: "API tests" } },
+      { value: "157", label: { es: "pruebas en Android", en: "Android tests" } },
+      { value: "17", label: { es: "pantallas en Compose", en: "Compose screens" } },
+    ],
     video: {
       src: "/videos/leveluplife-demo.mp4",
       poster: "/videos/leveluplife-demo.webp",
@@ -93,6 +101,12 @@ export const projects: Project[] = [
   {
     slug: "ciclo-finca-4",
     title: "Ciclo Finca 4",
+    metrics: [
+      { value: "155", label: { es: "rutas", en: "routes" } },
+      { value: "441", label: { es: "pruebas automatizadas", en: "automated tests" } },
+      { value: "5", label: { es: "nivel de PHPStan", en: "PHPStan level" } },
+      { value: "4", label: { es: "jobs de CI", en: "CI jobs" } },
+    ],
     video: {
       src: "/videos/ciclo-finca-4-demo.mp4",
       poster: "/videos/ciclo-finca-4-demo.webp",

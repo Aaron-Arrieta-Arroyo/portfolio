@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/components/layout/metadata";
+import { notes } from "@/content/notes";
 import { projects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", "/cv", ...projects.map((p) => `/projects/${p.slug}`)];
+  const paths = ["", "/cv", ...projects.map((p) => `/projects/${p.slug}`), ...notes.map((n) => `/notes/${n.slug}`)];
   return paths.map((path) => ({
     url: `${siteUrl}${path || "/"}`,
     changeFrequency: "monthly",

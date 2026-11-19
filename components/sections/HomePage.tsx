@@ -4,6 +4,7 @@ import { Contact } from "./Contact";
 import { Experience } from "./Experience";
 import { Hero } from "./Hero";
 import { Marquee } from "./Marquee";
+import { Notes } from "./Notes";
 import { Now } from "./Now";
 import { ProjectsSection } from "./ProjectsSection";
 import { Stack } from "./Stack";
@@ -21,6 +22,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <ProjectsSection locale={locale} dict={dict} />
       <Stack locale={locale} dict={dict} />
       <Now locale={locale} dict={dict} />
+      <Notes locale={locale} dict={dict} />
       <Contact dict={dict} />
     </>
   );

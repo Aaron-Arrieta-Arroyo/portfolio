@@ -52,6 +52,17 @@ function ProjectCard({ project, locale, dict }: { project: Project; locale: Loca
             <h3 className={`w-fit ${big ? "text-xl md:text-[1.75rem] md:leading-tight" : "text-xl"}`}>{project.title}</h3>
           </ViewTransition>
           <p className="leading-relaxed text-muted">{project.summary[locale]}</p>
+          {project.metrics && (
+            <dl className={`grid grid-cols-2 gap-x-4 gap-y-3 border-t border-white/[0.07] pt-4 ${big ? "sm:grid-cols-4" : ""}`}>
+              {project.metrics.map((m) => (
+                <div key={m.value + m.label.en} className="flex flex-col">
+                  <dt className="sr-only">{m.label[locale]}</dt>
+                  <dd className="text-xl leading-none tracking-[-0.03em] text-text">{m.value}</dd>
+                  <span aria-hidden className="label-mono mt-1.5 text-[0.62rem] leading-tight text-subtle">{m.label[locale]}</span>
+                </div>
+              ))}
+            </dl>
+          )}
           <div className="mt-auto flex items-end justify-between gap-4 pt-2">
             <ul className="flex flex-wrap gap-1.5" aria-label={dict.projects.stack}>
               {project.stack.slice(0, big ? 6 : 3).map((s) => (

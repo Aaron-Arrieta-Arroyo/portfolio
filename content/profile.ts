@@ -16,7 +16,7 @@ export const profile = {
 } as const;
 
 /** Section anchors, in page order. Labels live in content/i18n. */
-export const sections = ["about", "experience", "projects", "stack", "now", "contact"] as const;
+export const sections = ["about", "experience", "projects", "stack", "now", "notes", "contact"] as const;
 export type SectionId = (typeof sections)[number];
 
 /** Sections that appear in the navbar. */

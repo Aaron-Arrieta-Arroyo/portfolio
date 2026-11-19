@@ -20,6 +20,7 @@ const en: Dictionary = {
     projects: "Projects",
     stack: "Stack",
     now: "Now",
+    notes: "Writing",
     contact: "Contact",
   },
   hero: {
@@ -74,6 +75,8 @@ const en: Dictionary = {
     contribution: "What I built",
     architecture: "Architecture",
     demo: "Video demo",
+    metrics: "By the numbers",
+    metricsNote: "Project totals, counted from the repository.",
     learnings: "Learnings",
     next: "Next project",
     countOne: "{n} project",
@@ -82,6 +85,12 @@ const en: Dictionary = {
   stack: {
     softTitle: "Soft skills",
     intro: "Tools I use day to day and in team projects.",
+  },
+  notes: {
+    intro: "What I learn on the job, written down so it helps someone else.",
+    minutes: "{n} min read",
+    back: "Back to writing",
+    more: "Keep reading",
   },
   now: {
     title: "~/now",

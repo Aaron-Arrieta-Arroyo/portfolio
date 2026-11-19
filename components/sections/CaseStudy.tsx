@@ -119,6 +119,23 @@ export function CaseStudy({ project, locale }: { project: Project; locale: Local
           </ViewTransition>
         )}
 
+        {project.metrics && (
+          <section aria-label={t.metrics} className="mt-12">
+            <p className="label-mono mb-4 text-muted">{t.metrics}</p>
+            <dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              {project.metrics.map((m, i) => (
+                <Reveal key={m.value + m.label.en} delay={0.06 * i} data-spotlight className="glass-card flex flex-col-reverse gap-2 rounded-card p-5">
+                  <dt className="label-mono text-muted">{m.label[locale]}</dt>
+                  <dd className="text-4xl leading-none tracking-[-0.04em] text-text md:text-5xl">
+                    {m.value}
+                  </dd>
+                </Reveal>
+              ))}
+            </dl>
+            <p className="mt-3 text-sm text-subtle">{t.metricsNote}</p>
+          </section>
+        )}
+
         {project.video && (
           <Reveal className="mt-12">
             <p className="label-mono mb-4 flex items-center gap-3 text-muted">
